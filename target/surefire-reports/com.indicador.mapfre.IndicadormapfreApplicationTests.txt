@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.indicador.mapfre.IndicadormapfreApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 60.156 s - in com.indicador.mapfre.IndicadormapfreApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 51.847 s - in com.indicador.mapfre.IndicadormapfreApplicationTests
