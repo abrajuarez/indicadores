@@ -3,7 +3,6 @@ package com.indicador.mapfre.entity;
 import java.math.BigDecimal;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 
 
@@ -23,7 +23,7 @@ public class CMCentralMedica {
 	private int idSolicitud;
 	
 	@OneToMany(mappedBy = "centralMedica")
-	//@Cascade(CascadeType.ALL)
+	@Cascade(CascadeType.ALL)
 	private List<CMSiniestros> listSiniestros;
 	
 	@OneToMany(mappedBy = "centralMedica")
