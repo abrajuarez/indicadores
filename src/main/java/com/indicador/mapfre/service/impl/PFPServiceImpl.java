@@ -27,8 +27,8 @@ public class PFPServiceImpl implements PFPService{
 						          + "detalle.usuarioAnalista ,detalle.usuarioEmisor, detalle.usuarioSuscriptor, emision.fechaFin"
 						+ " FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle"
 						+ " WHERE emision.idEmision = detalle.idEmisionFK  AND"
-						      + " detalle.area = 'Emisi�n' AND "
-						      + " detalle.estatus = 'Pendiente'"
+						      + " detalle.area = 'Emisión' AND "
+						      + " detalle.estatus = 'En proceso'"
 						     ).getResultList();
 		return results;
 	}
@@ -39,8 +39,8 @@ public class PFPServiceImpl implements PFPService{
 			      createQuery("SELECT DISTINCT(emision.sector)"
 			      	    	+ "  FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle "
 			      	    	+ "  WHERE emision.idEmision = detalle.idEmisionFK  AND "
-			      	          	+ "  detalle.area = 'Emisi�n' AND "
-			      	          + " detalle.estatus = 'Pendiente'").getResultList();		    
+			      	          	+ "  detalle.area = 'Emisión' AND "
+			      	          + " detalle.estatus = 'En proceso'").getResultList();		    
 			  return resultList;
 	}
 	

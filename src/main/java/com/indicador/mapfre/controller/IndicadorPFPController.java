@@ -37,7 +37,7 @@ public class IndicadorPFPController {
 
 	@GetMapping("/indicador_pfp")
 	public String index(Model model) {
-		logger.info("Method: index " + chartPfp.chart().size());
+		logger.info("Method: index  param[size =" + chartPfp.chart().size()+"]");
 		model.addAttribute("grafica", chartPfp.chart());
 		return "mapfre/pfp/index";
 	}
@@ -46,13 +46,14 @@ public class IndicadorPFPController {
 	public String show(Model model, @ModelAttribute("datesmodel") DateModel datemodel) {
 		String dateStart = datemodel.getDateStart();
 		String dateFinish = datemodel.getDateFinish();
+		logger.info("Method: show ");
 		model.addAttribute("datesmodel", new DateModel(dateStart, dateFinish));
 		return "mapfre/nfa/show";
 	}
 
 	@PostMapping("/download/foliosPendientes.xlsx")
 	public ResponseEntity<InputStreamResource> excelCustomersReport() throws IOException {
-
+		logger.info("Method: excelCustomersReport ");
 		ByteArrayInputStream in = report.create();
 		// return IOUtils.toByteArray(in);
 
@@ -64,7 +65,7 @@ public class IndicadorPFPController {
 
 	@PostMapping("/download/pfp.pdf")
 	public ResponseEntity<InputStreamResource> CreatePdfReport() throws IOException {
-
+		logger.info("Method: CreatePdfReport ");
 		ByteArrayInputStream in = pdfReport.create(chartPfp.chart());
 		// return IOUtils.toByteArray(in);
 		logger.info("entro reques2 pdf-> " + in);

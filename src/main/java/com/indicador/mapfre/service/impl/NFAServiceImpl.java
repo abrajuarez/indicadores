@@ -31,9 +31,10 @@ public class NFAServiceImpl implements NFAService{
 		logger.info("Method:distincSectorByFechaFin");
 		List<String> resultList= entityManager.
 			      createQuery("SELECT DISTINCT(emision.sector)  "
-			      		     + "FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle"
-			      		     + " WHERE emision.idEmision = detalle.idEmisionFK  AND"
-			      		     + " detalle.area = 'Emisi�n' AND"
+			      		     + "FROM XxmpfBpmIndEmision emision INNER JOIN XxmpfBpmIndEmiDetalle detalle"
+			      		     + " ON emision.idEmision = detalle.idEmisionFK"
+			      		     + " WHERE detalle.estatus != 'En Proceso'  AND"
+			      		     + " detalle.area = 'Emisión' AND"
 			      		     + " emision.fechaFin > TO_DATE('"+dateStart+"', 'DD/MM/YY') AND"
 			      		     		+ " emision.fechaFin < TO_DATE('"+dateFinish+"', 'DD/MM/YY')" ).getResultList();		    
 			  return resultList;
@@ -50,9 +51,10 @@ public class NFAServiceImpl implements NFAService{
 		}*/
 		TypedQuery<XxmpfBpmIndEmision> query = entityManager.
 			      createQuery("SELECT emision  "
-			      		+ "FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle "
-			      		+ "WHERE emision.idEmision = detalle.idEmisionFK  AND"
-			      		+ " detalle.area = 'Emisi�n' AND"
+			      		+ "FROM XxmpfBpmIndEmision emision INNER JOIN XxmpfBpmIndEmiDetalle detalle "
+			      		+ " ON emision.idEmision = detalle.idEmisionFK"
+			      		+ " WHERE  detalle.estatus != 'En Proceso' AND"
+			      		+ " detalle.area = 'Emisión' AND"
 			      		+ " emision.fechaFin > TO_DATE('"+dateStart+"', 'DD/MM/YY') AND emision.fechaFin < TO_DATE('"+dateFinish+"', 'DD/MM/YY')", XxmpfBpmIndEmision.class);
 			    List<XxmpfBpmIndEmision> resultList = query.getResultList();
 			    return resultList;
@@ -68,7 +70,7 @@ public class NFAServiceImpl implements NFAService{
 						          + "detalle.usuarioAnalista ,detalle.usuarioEmisor, detalle.usuarioSuscriptor, emision.fechaFin"
 						+ " FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle"
 						+ " WHERE emision.idEmision = detalle.idEmisionFK  AND"
-						      + " detalle.area = 'Emisi�n' AND "
+						      + " detalle.area = 'Emisión' AND "
 						      + "emision.fechaFin > TO_DATE('"+dateStart+"', 'DD/MM/YY') AND "
 						      + "emision.fechaFin < TO_DATE('"+dateFinish+"', 'DD/MM/YY')").getResultList();
 		return results;

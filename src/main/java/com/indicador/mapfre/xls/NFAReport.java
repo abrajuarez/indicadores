@@ -31,10 +31,10 @@ public class NFAReport {
 	@Autowired
 	NFAService nfaService;
 
-	private String[] columTitle = { "N�mero de folio", "�	Sector (ramo)", "Tipo de solicitud", "�	Divisional",
-			"Regional", "�	Oficina comercial", "�	Agente", "�	Estatus",
-			"�	Motivo (en caso de devoluciones y rechazos)", "�	Usuario analista", "�	Usuario emisor",
-			"�	Usuario suscriptor", "�Fecha y hora en la que el folio fue atendido" };
+	private String[] columTitle = { "N'umero de folio", "	Sector (ramo)", "Tipo de solicitud", "	Divisional",
+			"Regional", "	Oficina comercial", "	Agente", "	Estatus",
+			"	Motivo (en caso de devoluciones y rechazos)", "	Usuario analista", "	Usuario emisor",
+			"	Usuario suscriptor", "Fecha y hora en la que el folio fue atendido" };
 
 	public ByteArrayInputStream create(DateModel dateModel) throws IOException {
 		try (Workbook workbook = new HSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream();) {

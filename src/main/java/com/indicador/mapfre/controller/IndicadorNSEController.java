@@ -42,6 +42,7 @@ public class IndicadorNSEController {
 	
 	@PostMapping("/indicador_nse_show")
 	public String show(Model model, @Valid DateModel datemodel, BindingResult bindingResult) {
+		logger.info("Method: show");
 		if (bindingResult.hasErrors()) {
             return "redirect:/indicador_nse";
         }
@@ -56,6 +57,8 @@ public class IndicadorNSEController {
 	@PostMapping("/download/nse.pdf")
 	public ResponseEntity<InputStreamResource> CreatePdfReport(@ModelAttribute("datesmodel") DateModel datesmodel)
 			throws IOException {
+		logger.info("Method: CreatePdfReport");
+		
 		String dateStart = datesmodel.getDateStart();
 		String dateFinish = datesmodel.getDateFinish();
 		

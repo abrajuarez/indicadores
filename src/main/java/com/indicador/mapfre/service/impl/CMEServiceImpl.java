@@ -38,7 +38,7 @@ public class CMEServiceImpl implements CMEService {
 
 		List<Object[]> results = entityManager.createQuery(
 				" SELECT COUNT(emision)" + " FROM XxmpfBpmIndEmiDetalle detalle, XxmpfBpmIndEmision emision"
-						+ " WHERE emision.idEmision = detalle.idEmisionFK  AND" + " detalle.area = 'Emisi�n' AND "
+						+ " WHERE emision.idEmision = detalle.idEmisionFK  AND" + " detalle.area = 'Emisión' AND "
 						+ " emision.sector = '" + sector + "' AND" + " detalle.fechaInicio BETWEEN TO_DATE('" + prevDate
 						+ "', 'DD/MM/YY') AND TO_DATE('" + dateComplit + "', 'DD/MM/YY') AND"
 						+ " (detalle.estatus = 'Pendiente' OR detalle.fechaFin >= TO_DATE('" + dateComplit
@@ -53,14 +53,14 @@ public class CMEServiceImpl implements CMEService {
 		String prevDate = DateUtil.minusMonths(dateComplit, 1);
 
 		List<Object[]> results = entityManager.createQuery(" SELECT COUNT(detalle),"
-				+ " CASE emision.tipoSolicitud WHEN 'ENDOSO' THEN 'Endosos'" + " ELSE 'P�lizas y renovaciones'"
+				+ " CASE emision.tipoSolicitud WHEN 'ENDOSO' THEN 'Endosos'" + " ELSE 'Pólizas y renovaciones'"
 				+ " END " + " FROM XxmpfBpmIndEmiDetalle detalle, XxmpfBpmIndEmision emision"
-				+ " WHERE emision.idEmision = detalle.idEmisionFK  AND" + " detalle.area = 'Emisi�n' AND "
+				+ " WHERE emision.idEmision = detalle.idEmisionFK  AND" + " detalle.area = 'Emisión' AND "
 				+ " emision.sector = '" + sector + "' AND" + " detalle.fechaInicio BETWEEN TO_DATE('" + prevDate
 				+ "', 'DD/MM/YY') AND TO_DATE('" + dateComplit + "', 'DD/MM/YY') AND"
 				+ " (detalle.estatus = 'Pendiente' OR detalle.fechaFin >= TO_DATE('" + dateComplit + "', 'DD/MM/YY'))"
 				+ " GROUP BY CASE emision.tipoSolicitud WHEN 'ENDOSO' THEN 'Endosos' "
-				+ " ELSE 'P�lizas y renovaciones' END").getResultList();
+				+ " ELSE 'Pólizas y renovaciones' END").getResultList();
 
 		for (Object[] emision : results) {
 			logger.info("Method: foliosRegistre add[ COUNT= " + emision[0].toString() + ", Tipo de Solicitud = "
@@ -78,14 +78,14 @@ public class CMEServiceImpl implements CMEService {
 
 		List<Object[]> results = entityManager.createQuery(" SELECT COUNT(TO_CHAR(detalle.idEmiDetalle)),"
 				+ "  TO_CHAR(detalle.fechaInicio, 'dd/MM/yy'), " + "  detalle.fechaInicio,"
-				+ " CASE emision.tipoSolicitud WHEN 'ENDOSO' THEN 'Endosos'" + " ELSE 'P�lizas y renovaciones'"
+				+ " CASE emision.tipoSolicitud WHEN 'ENDOSO' THEN 'Endosos'" + " ELSE 'Pólizas y renovaciones'"
 				+ " END " + " FROM XxmpfBpmIndEmiDetalle detalle, XxmpfBpmIndEmision emision"
-				+ " WHERE emision.idEmision = detalle.idEmisionFK  AND" + " detalle.area = 'Emisi�n' AND "
+				+ " WHERE emision.idEmision = detalle.idEmisionFK  AND" + " detalle.area = 'Emisión' AND "
 				+ " emision.sector = '" + sector + "' AND" + " detalle.fechaInicio BETWEEN TO_DATE('" + prevDate
 				+ "', 'DD/MM/YY') AND TO_DATE('" + dateComplit + "', 'DD/MM/YY') AND"
 				+ " (detalle.estatus = 'Pendiente' OR detalle.fechaFin >= TO_DATE('" + dateComplit + "', 'DD/MM/YY'))"
 				+ " GROUP By TO CHAR(detalle.fechaInicio, 'dd/MM/yy')," + " CASE emision.tipoSolicitud"
-				+ " WHEN 'ENDOSO' THEN 'Endosos' " + " ELSE 'P�lizas y renovaciones' END," + " detalle.fechaInicio"
+				+ " WHEN 'ENDOSO' THEN 'Endosos' " + " ELSE 'Pólizas y renovaciones' END," + " detalle.fechaInicio"
 				+ " ORDER BY detalle.fechaInicio ").getResultList();
 
 		for (Object[] emision : results) {
@@ -147,7 +147,7 @@ public class CMEServiceImpl implements CMEService {
 		List<Object[]> results = entityManager.createQuery(" SELECT emision.folio,"
 		                                                          + " detalle.idEmiDetalle,"
 				                                                  + " CASE emision.tipoSolicitud WHEN 'ENDOSO' THEN 'Endosos'" 
-		                                                          + "      ELSE 'P�lizas y renovaciones'"
+		                                                          + "      ELSE 'Pólizas y renovaciones'"
 				                                                  + "      END AS TIPO_SOLUCITUD," + " detalle.area," + " detalle.actividad," + " emision.divisional,"
 				                                                  + " emision.regional,"
 				                                                  + " emision.oficinaComercial,"
@@ -183,7 +183,7 @@ public class CMEServiceImpl implements CMEService {
 		List<Object[]> results = entityManager.createQuery(" SELECT emision.folio,"
                 + " detalle.idEmiDetalle,"
                 + " CASE emision.tipoSolicitud WHEN 'ENDOSO' THEN 'Endosos'" 
-                + "      ELSE 'P�lizas y renovaciones'"
+                + "      ELSE 'Pólizas y renovaciones'"
                 + "      END AS TIPO_SOLUCITUD," + " detalle.area," + " detalle.actividad," + " emision.divisional,"
                 + " emision.regional,"
                 + " emision.oficinaComercial,"

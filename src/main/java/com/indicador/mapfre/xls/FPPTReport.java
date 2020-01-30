@@ -24,10 +24,10 @@ public class FPPTReport {
 	
 	private static final Logger logger = LogManager.getLogger(FPPTReport.class);
 
-	private String[] columTitle = { "N�mero de folio", "�	Sector (ramo)", "Tipo de solicitud", "�	Divisional",
-			"Regional", "�	Oficina comercial", "�	Agente", "�	Estatus",
-			"�	Motivo (en caso de devoluciones y rechazos)", "�	Usuario analista", "�	Usuario emisor",
-			"�	Usuario suscriptor", "�Fecha y hora en la que el folio fue atendido" };
+	private String[] columTitle = { "Número de folio", "	Sector (ramo)", "Tipo de solicitud", "	Divisional",
+			"Regional", "	Oficina comercial", "	Agente", "	Estatus",
+			"	Motivo (en caso de devoluciones y rechazos)", "	Usuario analista", "	Usuario emisor",
+			"	Usuario suscriptor", "Fecha y hora en la que el folio fue atendido" };
 
 	@Autowired
 	private FPPTService fpptService;

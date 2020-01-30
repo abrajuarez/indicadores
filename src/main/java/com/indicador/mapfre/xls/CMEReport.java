@@ -22,10 +22,10 @@ public class CMEReport {
 	
 	private static final Logger logger = LogManager.getLogger(CMEReport.class);
 
-	private String[] columTitle = { "N�mero de folio", "ID", "Tipo de solicitud", "Area",
+	private String[] columTitle = { "Número de folio", "ID", "Tipo de solicitud", "Area",
 			"Actividad", "Divisional", "Regional", "Oficina Comercial",
 			"Usuario analista", "Nombre analista", "Usuario emisor", "Nombre emisor",
-			"�	Usuario suscriptor", "�	Nombre suscriptor","�Fecha Inicio",
+			"	Usuario suscriptor", "	Nombre suscriptor","Fecha Inicio",
 			"Dias"};
 	
 	public ByteArrayInputStream create(List<Object[]> list) throws IOException {

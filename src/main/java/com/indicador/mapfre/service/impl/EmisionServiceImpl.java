@@ -59,6 +59,7 @@ public class EmisionServiceImpl implements EmisionService {
 		} else {
 			count = listEmision.stream().filter(emision -> emision.getSector().equals(sector)).count();
 		}
+		logger.info("Method: countBySector return  [ listEmision = "+listEmision.size()+", sector = "+sector+", count = "+count+" ]");
 		return count.intValue();
 	}
 
@@ -82,7 +83,7 @@ public class EmisionServiceImpl implements EmisionService {
 						          + "detalle.usuarioAnalista ,detalle.usuarioEmisor, detalle.usuarioSuscriptor, emision.fechaFin"
 						+ " FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle"
 						+ " WHERE emision.idEmision = detalle.idEmisionFK  AND"
-						      + " detalle.area = 'Emisi�n' AND "
+						      + " detalle.area = 'Emisión' AND "
 						      + " detalle.estatus = '"+status+"'"
 						     ).getResultList();
 		return results;

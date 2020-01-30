@@ -26,17 +26,19 @@ public class NFRServiceImpl implements NFRService {
 	@Override
 	public List<String> findSectorByFechaInicio(String dateStart, String dateFinish) {
 		// TODO Auto-generated method stub
+		logger.info("Method findSectorByFechaInicio param [ "+dateStart+" - "+dateFinish);
 		return emisionService.findDistincSectorByFechaInicio(dateStart, dateFinish);
 	}
 
 	@Override
 	public List<XxmpfBpmIndEmision> findAllEmisionByFechaInicio(String dateStart, String dateFinish) {
 	 logger.info("Method findAllEmisionByFechaInicio param [ "+dateStart+" - "+dateFinish);
-		return emisionService.findAllEmisionByFechaInicio(dateStart, dateFinish);
+		return emisionRepository.findAllByFechaFinAndEstatusEmision(dateStart, dateFinish);
 	}
 
 	@Override
 	public Integer countBySectorAndFechaInicioBetween(List<XxmpfBpmIndEmision>  listEmision, String sector) {
+		logger.info("Method countBySectorAndFechaInicioBetween ");
 		return emisionService.countBySector(listEmision, sector);
 	}
 	

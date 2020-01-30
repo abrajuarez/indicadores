@@ -51,7 +51,7 @@ public class NMRServiceImpl implements NMRService{
 						          + "detalle.usuarioAnalista ,detalle.usuarioEmisor, detalle.usuarioSuscriptor, emision.fechaFin"
 						+ " FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle"
 						+ " WHERE emision.idEmision = detalle.idEmisionFK  AND"
-						      + " detalle.area = 'Emisi�n' AND "
+						      + " detalle.area = 'Emisión' AND "
 						      + " detalle.estatus = 'Emitido' AND"
 						      + " emision.estatus = 'Emitido' AND"
 						      + " emision.fechaFin  > TO_DATE('"+date.getDateStart()+"', 'DD/MM/YY') AND"

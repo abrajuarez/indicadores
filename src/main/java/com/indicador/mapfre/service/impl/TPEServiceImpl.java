@@ -40,7 +40,7 @@ public class TPEServiceImpl  implements TPEService{
 	@Override
    public BigDecimal AvgTiempoActividadBySector(String sector) {
 		logger.info("Method:AvgTiempoActividadBySector");
-		return detalleRepository.AvgTiempoActividadBySector(sector);
+		return detalleRepository.AvgTiempoAtencionBySector(sector);
    }
 
 }

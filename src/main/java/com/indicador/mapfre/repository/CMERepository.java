@@ -16,7 +16,7 @@ public interface CMERepository extends JpaRepository<XxmpfBpmIndEmiDetalle, Stri
 	
 	String querys =" SELECT COUNT(TO_CHAR(detalle.idEmiDetalle)),"
 			+ " CASE emision.tipoSolicitud WHEN 'ENDOSO' THEN 'Endosos'"
-			+ " ELSE 'P�lizas y renovaciones'"
+			+ " ELSE 'Pólizas y renovaciones'"
 			+ " END AS TIPO_SOLUCITUD"
             + " FROM XxmpfBpmIndEmiDetalle detalle, XxmpfBpmIndEmision emision"
             + " WHERE emision.idEmision = detalle.idEmisionFK  AND"
@@ -24,13 +24,13 @@ public interface CMERepository extends JpaRepository<XxmpfBpmIndEmiDetalle, Stri
             + " emision.sector = :sector AND"
             + " detalle.fechaInicio BETWEEN :fechaPrev AND :fecha AND"
             + " (detalle.estatus = 'Pendiente' OR detalle.fechaFin >= :fecha)"
-            + " GROUP BY CASE emision.tipoSolicitud WHEN 'ENDOSO' THEN 'Endosos' ELSE 'P�lizas y renovaciones' END ";
+            + " GROUP BY CASE emision.tipoSolicitud WHEN 'ENDOSO' THEN 'Endosos' ELSE 'Pólizas y renovaciones' END ";
 	
 	
 	String querys2 =" SELECT count(detalle)"
             + " FROM XxmpfBpmIndEmiDetalle detalle, XxmpfBpmIndEmision emision"
             + " WHERE emision.idEmision = detalle.idEmisionFK  AND"
-            + " detalle.area = 'Emisi�n' AND "
+            + " detalle.area = 'Emisión' AND "
             + " emision.sector = :sector AND"
             + " detalle.fechaInicio BETWEEN :fechaPrev AND :fecha AND"
             + " (detalle.estatus = 'Pendiente' OR detalle.fechaFin >= :fecha)";

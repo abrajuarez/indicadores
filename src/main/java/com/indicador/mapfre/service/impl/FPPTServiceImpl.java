@@ -24,7 +24,7 @@ public class FPPTServiceImpl implements FPPTService{
 	
 	@Override
 	public List<Object []> allByEstatus(){
-		String status = "EN_PROCESO";
+		String status = "En Proceso";
 		return emisionService.allByEstatus(status);
 	}
 

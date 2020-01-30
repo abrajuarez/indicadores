@@ -1,7 +1,6 @@
 package com.indicador.mapfre.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -29,20 +28,23 @@ public interface XxmpfBpmIndEmisionRepository extends JpaRepository<XxmpfBpmIndE
 	@Query("SELECT emision FROM XxmpfBpmIndEmision emision WHERE emision.fechaFin > :dateStart AND emision.fechaFin < :dateFinish")
 	List<XxmpfBpmIndEmision> findAllEmisionByFechaFin(@Param("dateStart") String dateStart, @Param("dateFinish")  String dateFinish);
 	
-	@Query("SELECT emision FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle WHERE emision.idEmision = detalle.idEmisionFK  AND detalle.area = 'Emisi�n' AND emision.fechaFin > :dateStart AND emision.fechaFin < :dateFinish")
+	@Query("SELECT emision FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle WHERE emision.idEmision = detalle.idEmisionFK  AND detalle.area = 'Emisión' AND emision.fechaFin > :dateStart AND emision.fechaFin < :dateFinish")
 	List<XxmpfBpmIndEmision> findAllByAreaAndFechaFin(@Param("dateStart") String dateStart, @Param("dateFinish")  String dateFinish);
 	
-	@Query("SELECT emision FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle WHERE emision.idEmision = detalle.idEmisionFK  AND detalle.area = 'Emisi�n' AND emision.estatus = 'Emitido' AND detalle.estatus = 'Emitido' AND emision.fechaFin > :dateStart AND emision.fechaFin < :dateFinish")
+	@Query("SELECT emision FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle WHERE emision.idEmision = detalle.idEmisionFK  AND detalle.area = 'Emisión' AND emision.estatus = 'Emitido' AND detalle.estatus = 'Emitido' AND emision.fechaFin > :dateStart AND emision.fechaFin < :dateFinish")
 	List<XxmpfBpmIndEmision> findAllByAreaAndEstatusAndFechaFin(@Param("dateStart") String dateStart, @Param("dateFinish")  String dateFinish);
 	
-	@Query("SELECT emision FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle WHERE emision.idEmision = detalle.idEmisionFK  AND detalle.area = 'Emisi�n' AND detalle.actividadATiempo = 1 AND emision.fechaFin > :dateStart AND emision.fechaFin < :dateFinish")
+	@Query("SELECT emision FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle WHERE emision.idEmision = detalle.idEmisionFK  AND detalle.area = 'Emisión' AND detalle.actividadATiempo = 1 AND emision.fechaFin > :dateStart AND emision.fechaFin < :dateFinish")
 	List<XxmpfBpmIndEmision> findAllByAreaAndFechaFinAndAtiempo(@Param("dateStart") String dateStart, @Param("dateFinish")  String dateFinish);
 	
 	//@Query(value ="SELECT * FROM xxmpf_Bpm_Ind_Emision  em WHERE em.fecha_Inicio > :dateStart AND em.fecha_Inicio < :dateFinish" , nativeQuery=true)
 	@Query("SELECT emision FROM XxmpfBpmIndEmision emision WHERE emision.fechaInicio > :dateStart AND emision.fechaInicio < :dateFinish")
 	List<XxmpfBpmIndEmision> findAllEmisionByFechaInicio(@Param("dateStart") String dateStart, @Param("dateFinish")  String dateFinish);
 	
-	@Query("SELECT emision FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle WHERE emision.idEmision = detalle.idEmisionFK  AND detalle.area = 'Emisi�n' AND emision.fechaInicio > :dateStart AND emision.fechaInicio < :dateFinish")
+	@Query("SELECT emision FROM XxmpfBpmIndEmision emision INNER JOIN  XxmpfBpmIndEmiDetalle det ON emision.idEmision = det.idEmisionFK WHERE det.area='Emisión'  AND emision.fechaFin >= :dateStart AND emision.fechaFin < :dateFinish")
+	List<XxmpfBpmIndEmision> findAllByFechaFinAndEstatusEmision(@Param("dateStart") String dateStart, @Param("dateFinish")  String dateFinish);
+	
+	@Query("SELECT emision FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle WHERE emision.idEmision = detalle.idEmisionFK  AND detalle.area = 'Emisión' AND emision.fechaInicio > :dateStart AND emision.fechaInicio < :dateFinish")
 	List<XxmpfBpmIndEmision> findAllByAreaAndFechaInicio(@Param("dateStart") String dateStart, @Param("dateFinish")  String dateFinish);
 	
 }

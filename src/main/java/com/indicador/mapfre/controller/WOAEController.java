@@ -30,15 +30,15 @@ public class WOAEController {
 	@GetMapping("/woae")
 	public String show(Model model) {
 		logger.info("show");
-		model.addAttribute("actualDevolucionDivisional",service.mesActual("divisional","Devoluci�n"));
-		model.addAttribute("actualDevolucionRegional",service.mesActual("regional","Devoluci�n"));
-		model.addAttribute("actualDevolucionAgente",service.mesActual("agente","Devoluci�n"));
-		model.addAttribute("actualDevolucionAnalista",service.mesActualAnalista("nombreanalista","Devoluci�n"));
+		model.addAttribute("actualDevolucionDivisional",service.mesActual("divisional","Devolución"));
+		model.addAttribute("actualDevolucionRegional",service.mesActual("regional","Devolución"));
+		model.addAttribute("actualDevolucionAgente",service.mesActual("agente","Devolución"));
+		model.addAttribute("actualDevolucionAnalista",service.mesActualAnalista("nombreanalista","Devolución"));
 		//
-		model.addAttribute("anteriorDevolucionDivisional",service.mesAnterior("divisional","Devoluci�n"));
-		model.addAttribute("anteriorDevolucionRegional",service.mesAnterior("regional","Devoluci�n"));
-		model.addAttribute("anteriorDevolucionAgente",service.mesAnterior("agente","Devoluci�n"));
-		model.addAttribute("anteriorDevolucionAnalista",service.mesAnteriorAnalista("nombreanalista","Devoluci�n"));
+		model.addAttribute("anteriorDevolucionDivisional",service.mesAnterior("divisional","Devolución"));
+		model.addAttribute("anteriorDevolucionRegional",service.mesAnterior("regional","Devolución"));
+		model.addAttribute("anteriorDevolucionAgente",service.mesAnterior("agente","Devolución"));
+		model.addAttribute("anteriorDevolucionAnalista",service.mesAnteriorAnalista("nombreanalista","Devolución"));
 		//
 		//Rechazo
 		model.addAttribute("actualRechazoDivisional",service.mesActual("divisional","Rechazo manual"));
@@ -52,15 +52,15 @@ public class WOAEController {
 		model.addAttribute("anteriorRechazoAnalista",service.mesAnteriorAnalista("nombreanalista","Rechazo manual"));
 		//
 		//Pendiente
-		model.addAttribute("actualPendienteDivisional",service.mesActual("divisional","Pendiente de informaci�n"));
-		model.addAttribute("actualPendienteRegional",service.mesActual("regional","Pendiente de informaci�n"));
-		model.addAttribute("actualPendienteAgente",service.mesActual("agente","Pendiente de informaci�n"));
-		model.addAttribute("actualPendienteAnalista",service.mesActualAnalista("nombreanalista","Pendiente de informaci�n"));
+		model.addAttribute("actualPendienteDivisional",service.mesActual("divisional","Pendiente de información"));
+		model.addAttribute("actualPendienteRegional",service.mesActual("regional","Pendiente de información"));
+		model.addAttribute("actualPendienteAgente",service.mesActual("agente","Pendiente de información"));
+		model.addAttribute("actualPendienteAnalista",service.mesActualAnalista("nombreanalista","Pendiente de información"));
 		//
-		model.addAttribute("anteriorPendienteDivisional",service.mesAnterior("divisional","Pendiente de informaci�n"));
-		model.addAttribute("anteriorPendienteRegional",service.mesAnterior("regional","Pendiente de informaci�n"));
-		model.addAttribute("anteriorPendienteAgente",service.mesAnterior("agente","Pendiente de informaci�n"));
-		model.addAttribute("anteriorPendienteAnalista",service.mesAnteriorAnalista("nombreanalista","Pendiente de informaci�n"));
+		model.addAttribute("anteriorPendienteDivisional",service.mesAnterior("divisional","Pendiente de información"));
+		model.addAttribute("anteriorPendienteRegional",service.mesAnterior("regional","Pendiente de información"));
+		model.addAttribute("anteriorPendienteAgente",service.mesAnterior("agente","Pendiente de información"));
+		model.addAttribute("anteriorPendienteAnalista",service.mesAnteriorAnalista("nombreanalista","Pendiente de información"));
 		//
 		//Sistemas
 		model.addAttribute("actualSistemaDivisional",service.mesActual("divisional","Sistemas"));

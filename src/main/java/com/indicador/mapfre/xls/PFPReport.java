@@ -23,10 +23,10 @@ public class PFPReport {
 	@Autowired
 	PFPService pfpService;
 
-	private String[] columTitle = { "N�mero de folio", "�	Sector (ramo)", "Tipo de solicitud", "�	Divisional",
-			"Regional", "�	Oficina comercial", "�	Agente", "�	Estatus",
-			"�	Motivo (en caso de devoluciones y rechazos)", "�	Usuario analista", "�	Usuario emisor",
-			"�	Usuario suscriptor", "�Fecha y hora en la que el folio fue atendido" };
+	private String[] columTitle = { "Número de folio", "	Sector (ramo)", "Tipo de solicitud", "	Divisional",
+			"Regional", "	Oficina comercial", "	Agente", "	Estatus",
+			"	Motivo (en caso de devoluciones y rechazos)", "	Usuario analista", "	Usuario emisor",
+			"	Usuario suscriptor", "Fecha y hora en la que el folio fue atendido" };
 
 	public ByteArrayInputStream create() throws IOException {
 		try (Workbook workbook = new HSSFWorkbook();

@@ -69,8 +69,8 @@ public class FTEPdf {
 			Image imageAyE = Image.getInstance(bufferedImageAyE, null);
 			table.addCell(imageAyE);
 			BufferedImage bufferedImageDanos = JFreeChartUtil
-					.verticalBarChartByListChartCombinationModel(service.createMothCurrent("Da�os"),
-							"Da�os", "", "")
+					.verticalBarChartByListChartCombinationModel(service.createMothCurrent("Daños"),
+							"Daños", "", "")
 					.createBufferedImage(500, 300);
 			Image imageDanos = Image.getInstance(bufferedImageDanos, null);
 			table.addCell(imageDanos);
@@ -105,7 +105,7 @@ public class FTEPdf {
 			Image imageAyE = Image.getInstance(bufferedImageAyE, null);
 			table.addCell(imageAyE);
 			BufferedImage bufferedImageDanos = JFreeChartUtil
-					.verticalBarChartByListChartCombinationModel(service.createMothPrevious("Da�os"),
+					.verticalBarChartByListChartCombinationModel(service.createMothPrevious("Daños"),
 							"Daños", "", "")
 					.createBufferedImage(500, 300);
 			Image imageDanos = Image.getInstance(bufferedImageDanos, null);
