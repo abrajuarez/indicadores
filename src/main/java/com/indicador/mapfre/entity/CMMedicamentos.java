@@ -54,4 +54,110 @@ public class CMMedicamentos {
 	
 	@Column(name="INDICE_PROVIDER")
 	private String indiceProvider;
+
+	public int getIdMedicamento() {
+		return idMedicamento;
+	}
+
+	public void setIdMedicamento(int idMedicamento) {
+		this.idMedicamento = idMedicamento;
+	}
+
+	public CMSiniestros getSiniestro() {
+		return siniestro;
+	}
+
+	public void setSiniestro(CMSiniestros siniestro) {
+		this.siniestro = siniestro;
+	}
+
+	public String getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(String proveedor) {
+		this.proveedor = proveedor;
+	}
+
+	public String getCodigoMedicamento() {
+		return codigoMedicamento;
+	}
+
+	public void setCodigoMedicamento(String codigoMedicamento) {
+		this.codigoMedicamento = codigoMedicamento;
+	}
+
+	public String getDescripcionMedicamento() {
+		return descripcionMedicamento;
+	}
+
+	public void setDescripcionMedicamento(String descripcionMedicamento) {
+		this.descripcionMedicamento = descripcionMedicamento;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public BigDecimal getPrecioAutUnidad() {
+		return precioAutUnidad;
+	}
+
+	public void setPrecioAutUnidad(BigDecimal precioAutUnidad) {
+		this.precioAutUnidad = precioAutUnidad;
+	}
+
+	public BigDecimal getTotalAutorizado() {
+		return totalAutorizado;
+	}
+
+	public void setTotalAutorizado(BigDecimal totalAutorizado) {
+		this.totalAutorizado = totalAutorizado;
+	}
+
+	public String getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public String getLastUpdateBy() {
+		return lastUpdateBy;
+	}
+
+	public void setLastUpdateBy(String lastUpdateBy) {
+		this.lastUpdateBy = lastUpdateBy;
+	}
+
+	public String getIndiceProvider() {
+		return indiceProvider;
+	}
+
+	public void setIndiceProvider(String indiceProvider) {
+		this.indiceProvider = indiceProvider;
+	}
+	
+	
 }

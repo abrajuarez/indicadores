@@ -46,4 +46,94 @@ public class CMDocumentos {
 	
 	@Column(name="INDICE_PROVIDER")
 	private String indiceProvider;
+
+	public int getIdDocumento() {
+		return idDocumento;
+	}
+
+	public void setIdDocumento(int idDocumento) {
+		this.idDocumento = idDocumento;
+	}
+
+	public CMCentralMedica getCentralMedica() {
+		return centralMedica;
+	}
+
+	public void setCentralMedica(CMCentralMedica centralMedica) {
+		this.centralMedica = centralMedica;
+	}
+
+	public String getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+
+	public String getNotificado() {
+		return notificado;
+	}
+
+	public void setNotificado(String notificado) {
+		this.notificado = notificado;
+	}
+
+	public String getRecibido() {
+		return recibido;
+	}
+
+	public void setRecibido(String recibido) {
+		this.recibido = recibido;
+	}
+
+	public String getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public String getLastUpdateBy() {
+		return lastUpdateBy;
+	}
+
+	public void setLastUpdateBy(String lastUpdateBy) {
+		this.lastUpdateBy = lastUpdateBy;
+	}
+
+	public String getIndiceProvider() {
+		return indiceProvider;
+	}
+
+	public void setIndiceProvider(String indiceProvider) {
+		this.indiceProvider = indiceProvider;
+	}
+	
+	
 }

@@ -39,4 +39,70 @@ public class CMCpt {
 	
 	@Column(name="LAST_UPDATED_BY")
 	private String lastUpdatedBy;
+
+	public Long getIdCpt() {
+		return idCpt;
+	}
+
+	public void setIdCpt(Long idCpt) {
+		this.idCpt = idCpt;
+	}
+
+	public CMSiniestros getSiniestro() {
+		return siniestro;
+	}
+
+	public void setSiniestro(CMSiniestros siniestro) {
+		this.siniestro = siniestro;
+	}
+
+	public String getDescripcionCpt() {
+		return descripcionCpt;
+	}
+
+	public void setDescripcionCpt(String descripcionCpt) {
+		this.descripcionCpt = descripcionCpt;
+	}
+
+	public String getClaveCpt() {
+		return claveCpt;
+	}
+
+	public void setClaveCpt(String claveCpt) {
+		this.claveCpt = claveCpt;
+	}
+
+	public String getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getLastUpdatedDate() {
+		return lastUpdatedDate;
+	}
+
+	public void setLastUpdatedDate(String lastUpdatedDate) {
+		this.lastUpdatedDate = lastUpdatedDate;
+	}
+
+	public String getLastUpdatedBy() {
+		return lastUpdatedBy;
+	}
+
+	public void setLastUpdatedBy(String lastUpdatedBy) {
+		this.lastUpdatedBy = lastUpdatedBy;
+	}
+	
+	
 }

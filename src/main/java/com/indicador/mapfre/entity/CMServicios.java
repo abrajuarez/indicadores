@@ -56,4 +56,110 @@ public class CMServicios {
 	
 	@Column(name="INDICE_PROVIDER")
 	private String indiceProvider;
+
+	public int getIdServicio() {
+		return idServicio;
+	}
+
+	public void setIdServicio(int idServicio) {
+		this.idServicio = idServicio;
+	}
+
+	public CMSiniestros getSiniestro() {
+		return siniestro;
+	}
+
+	public void setSiniestro(CMSiniestros siniestro) {
+		this.siniestro = siniestro;
+	}
+
+	public String getRazonSocial() {
+		return razonSocial;
+	}
+
+	public void setRazonSocial(String razonSocial) {
+		this.razonSocial = razonSocial;
+	}
+
+	public String getTipoServicio() {
+		return tipoServicio;
+	}
+
+	public void setTipoServicio(String tipoServicio) {
+		this.tipoServicio = tipoServicio;
+	}
+
+	public String getSubtipoServicio() {
+		return subtipoServicio;
+	}
+
+	public void setSubtipoServicio(String subtipoServicio) {
+		this.subtipoServicio = subtipoServicio;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public BigDecimal getPrecioAutUnidad() {
+		return precioAutUnidad;
+	}
+
+	public void setPrecioAutUnidad(BigDecimal precioAutUnidad) {
+		this.precioAutUnidad = precioAutUnidad;
+	}
+
+	public BigDecimal getTotalAutorizado() {
+		return totalAutorizado;
+	}
+
+	public void setTotalAutorizado(BigDecimal totalAutorizado) {
+		this.totalAutorizado = totalAutorizado;
+	}
+
+	public String getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public String getLastUpdateBy() {
+		return lastUpdateBy;
+	}
+
+	public void setLastUpdateBy(String lastUpdateBy) {
+		this.lastUpdateBy = lastUpdateBy;
+	}
+
+	public String getIndiceProvider() {
+		return indiceProvider;
+	}
+
+	public void setIndiceProvider(String indiceProvider) {
+		this.indiceProvider = indiceProvider;
+	}
+	
+	
 }

@@ -43,4 +43,86 @@ public class CMRegProceso {
 	
 	@Column(name="LAST_UPDATED_BY")
 	private String lastUpdatedBy;
+
+	public Long getIdRegProceso() {
+		return idRegProceso;
+	}
+
+	public void setIdRegProceso(Long idRegProceso) {
+		this.idRegProceso = idRegProceso;
+	}
+
+	public List<CMBitacora> getListBitacora() {
+		return listBitacora;
+	}
+
+	public void setListBitacora(List<CMBitacora> listBitacora) {
+		this.listBitacora = listBitacora;
+	}
+
+	public List<CMComentProc> getListComentProc() {
+		return listComentProc;
+	}
+
+	public void setListComentProc(List<CMComentProc> listComentProc) {
+		this.listComentProc = listComentProc;
+	}
+
+	public int getCodSector() {
+		return codSector;
+	}
+
+	public void setCodSector(int codSector) {
+		this.codSector = codSector;
+	}
+
+	public int getCodProceso() {
+		return codProceso;
+	}
+
+	public void setCodProceso(int codProceso) {
+		this.codProceso = codProceso;
+	}
+
+	public int getIdSolicitud() {
+		return idSolicitud;
+	}
+
+	public void setIdSolicitud(int idSolicitud) {
+		this.idSolicitud = idSolicitud;
+	}
+
+	public String getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(String lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public String getLastUpdatedBy() {
+		return lastUpdatedBy;
+	}
+
+	public void setLastUpdatedBy(String lastUpdatedBy) {
+		this.lastUpdatedBy = lastUpdatedBy;
+	}
+	
+	
 }
