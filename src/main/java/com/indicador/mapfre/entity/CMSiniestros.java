@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,7 +22,8 @@ public class CMSiniestros {
 	private int idSiniestro;
 	
 	@ManyToOne
-	@JoinColumn(name="ID_SOLICITUD", nullable=false)
+	@MapsId("ID_SOLICITUD")
+	@JoinColumn(name="ID_SOLICITUD",insertable = false, updatable = false)
 	private CMCentralMedica centralMedica;
 	
 	@OneToMany(mappedBy = "siniestro")

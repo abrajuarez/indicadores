@@ -1,6 +1,6 @@
 package com.indicador.mapfre.repository;
 
-import java.util.List;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -8,8 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.indicador.mapfre.entity.XxmpfBpmIndEmiDetalle;
-import com.indicador.mapfre.entity.XxmpfBpmIndEmision;
-import com.indicador.mapfre.model.Test1;;
+
 
 @Repository
 public interface CMERepository extends JpaRepository<XxmpfBpmIndEmiDetalle, String>{

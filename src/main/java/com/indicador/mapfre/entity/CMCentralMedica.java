@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
+
 
 
 @Entity
@@ -19,7 +22,8 @@ public class CMCentralMedica {
 	@Id
 	private int idSolicitud;
 	
-	@OneToMany(mappedBy = "centralMedica", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "centralMedica")
+	//@Cascade(CascadeType.ALL)
 	private List<CMSiniestros> listSiniestros;
 	
 	@OneToMany(mappedBy = "centralMedica")
