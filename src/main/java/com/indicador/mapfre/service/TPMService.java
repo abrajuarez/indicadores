@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface TPMService {
 
-	 BigDecimal truncTiemoActividadBySector(String sector) ;
+	 BigDecimal truncTiempoActividadBySector(String sector) ;
 	 
 	 List<String> sectores();
 }

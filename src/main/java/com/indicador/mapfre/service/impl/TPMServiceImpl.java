@@ -27,9 +27,8 @@ public class TPMServiceImpl implements TPMService {
 	XxmpfBpmIndEmiDetalleRepository detalleRepository;
 
 	@Override
-	public BigDecimal truncTiemoActividadBySector(String sector) {
-		return null;
-		//return detalleRepository.truncTiempoActividadBySector(sector);
+	public BigDecimal truncTiempoActividadBySector(String sector) {
+		return detalleRepository.truncTiempoActividadBySector(sector);
 	}
 
 	@Override

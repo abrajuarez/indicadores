@@ -18,7 +18,7 @@ public interface XxmpfBpmIndEmiDetalleRepository extends JpaRepository<XxmpfBpmI
 	@Query("SELECT AVG(detalle.tiempoAtencion) FROM XxmpfBpmIndEmiDetalle detalle,XxmpfBpmIndEmision emision WHERE emision.idEmision = detalle.idEmisionFK AND detalle.estatus = 'Emitido' AND emision.sector = :sector")
 	public BigDecimal AvgTiempoAtencionBySector(@Param("sector") String sector);
 	
-	/*@Query("SELECT TRUNC(SUM(detalle.tiempoAtencion) / SUM(emision.numRiesgos),2)FROM XxmpfBpmIndEmiDetalle detalle,XxmpfBpmIndEmision emision WHERE emision.idEmision = detalle.idEmisionFK AND detalle.estatus != 'Pendiente' AND detalle.area = 'Emisi�n' AND emision.sector = :sector")
-	public BigDecimal truncTiempoActividadBySector(@Param("sector") String sector);*/
+	@Query("SELECT TRUNC(SUM(detalle.tiempoAtencion) / SUM(emision.numRiesgos),2)FROM XxmpfBpmIndEmiDetalle detalle INNER JOIN XxmpfBpmIndEmision emision ON detalle.idEmisionFK = emision.idEmision  WHERE   detalle.estatus != 'Pendiente' AND detalle.area = 'Emisión' AND emision.sector = :sector")
+	public BigDecimal truncTiempoActividadBySector(@Param("sector") String sector);
 
 }
