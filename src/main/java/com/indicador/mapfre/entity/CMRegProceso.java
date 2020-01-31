@@ -30,7 +30,7 @@ public class CMRegProceso {
 	private int codProceso;
 	
 	@Column(name="ID_SOLICITUD")
-	private int idSolicitud;
+	private Long idSolicitud;
 	
 	@Column(name="CREATION_DATE")
 	private String creationDate;
@@ -84,11 +84,11 @@ public class CMRegProceso {
 		this.codProceso = codProceso;
 	}
 
-	public int getIdSolicitud() {
+	public Long getIdSolicitud() {
 		return idSolicitud;
 	}
 
-	public void setIdSolicitud(int idSolicitud) {
+	public void setIdSolicitud(Long idSolicitud) {
 		this.idSolicitud = idSolicitud;
 	}
 

@@ -1,5 +1,7 @@
 package com.indicador.mapfre.util;
 
+import java.util.Optional;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -47,5 +49,15 @@ public class StringUtil {
 		logger.info("method: getHora param = "+fecha +" hora: "+fecha.substring(11, 16));
 		 return fecha.substring(11, 16);
        
+	}
+	
+	public static Long convertObjectLong(Object obj) {
+		return Long.parseLong(obj.toString());
+	}
+	
+	public static String validStringIsNull(String cadena) {
+		Optional<String> opt = Optional.ofNullable(cadena);
+		return opt.orElse("");
+
 	}
 }

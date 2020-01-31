@@ -2,12 +2,12 @@ package com.indicador.mapfre.util;
 
 public class ScriptReportCentralMedica {
 
-	public static final String REPORTQUERY = "SELECT cm.idSolicitud,cm.codSector, cm.idTipoSolicitud, cm.folio, cm.folioReapertura, cm.tipoTramite "+
+	public static  String REPORTQUERY = "SELECT cm.idSolicitud,cm.codSector, cm.idTipoSolicitud, cm.folio, cm.folioReapertura, cm.tipoTramite "+
 			                   ",cm.subTipoTramite, cm.tienePreautorizacion, cm.folioPreautorizacion,cm.nombreProveedor,cm.estadoRepublica " + 
 			                   ",cm.nivelHospitalario,cm.fechaIngreso,cm.urgencia,cm.habitacionAsignada,cm.numeroPoliza,cm.ramo,cm.polizaPagadaHasta " + 
 			                   ",cm.inicioVigencia,cm.finVigencia,cm.polProcesoEmision,cm.nombreContratante,cm.razonSocialContratante " + 
 			                   ",cm.categoriaAsegurado,cm.recienNacido,cm.primerNombrePaciente,cm.segundoNombrePaciente " + 
-			                   ",cm.apellidoPaternoPaciente,cm.apellidoMaternoPaciente,cm.numeroRiesgo,cm.generoPaciente" + 
+			                   ",cm.apellidoPaternoPaciente,cm.apellidoMaternoPaciente,cm.numeroRiesgo,cm.generoPaciente " + 
 			                   ",cm.titularPoliza,cm.medicoRed,cm.nombreMedico,cm.especialidadMedico,cm.redProveedor " + 
 			                   ",cm.sintomasDiagnostico,cm.femiliarResponsable,cm.telFamiliarResponsable,cm.nombreReportante " + 
 			                   ",cm.telefonoReportante,cm.emailReportante,cm.observacionesIngreso,cm.estatusTramite,cm.tienePrefacturas " + 
@@ -34,8 +34,8 @@ public class ScriptReportCentralMedica {
 			                   ",honorariosmd.integrante, honorariosmd.nombreMedico, honorariosmd.especialidad, honorariosmd.montoAutorizado, honorariosmd.folioRam, honorariosmd.tipoPago, honorariosmd.tipoReserva, honorariosmd.indiceProvider "+
 			                   ",medicamento.proveedor, medicamento.codigoMedicamento, medicamento.descripcionMedicamento, medicamento.cantidad, medicamento.precioAutUnidad, medicamento.totalAutorizado, medicamento.indiceProvider "+
 			                   ",servicio.razonSocial, servicio.tipoServicio, servicio.subtipoServicio, servicio.cantidad, servicio.precioAutUnidad, servicio.totalAutorizado, servicio.indiceProvider "+
-			                   ",cpt.descripcionCpt, cpt.claveCpt"+
-			                   ""
+			                   ",cpt.descripcionCpt, cpt.claveCpt, proceso.codSector, proceso.codProceso "+
+			                   ",bitacora.codSector, bitacora.nombreProceso, bitacora.nombreActividad, bitacora.fechaInicioActividad, bitacora.fechaFinActividad, bitacora.claveEstatus, bitacora.secuencia, bitacora.usuarioEjecutivo "
             + " FROM CMCentralMedica cm,"
             + " CMSiniestros sin,"
             + " CMDocumentos doc,"
@@ -43,14 +43,18 @@ public class ScriptReportCentralMedica {
             + " CMHonorariosMed honorariosmd,"
             + " CMMedicamentos medicamento,"
             + " CMServicios servicio,"
-            + " CMCpt cpt "
+            + " CMCpt cpt,"
+            + " CMRegProceso proceso,"
+            + " CMBitacora bitacora"
             + " WHERE cm.idSolicitud = sin.centralMedica"
             + " AND cm.idSolicitud = doc.centralMedica"
             + " AND cm.idSolicitud = valoracion.centralMedica "
             + " AND sin.idSiniestro = honorariosmd.siniestro"
             + " AND sin.idSiniestro = medicamento.siniestro"
             + " AND sin.idSiniestro = servicio.siniestro"
-            + " AND sin.idSiniestro = cpt.siniestro";
+            + " AND sin.idSiniestro = cpt.siniestro"
+            + " AND cm.idSolicitud = proceso.idSolicitud"
+            + " AND  proceso.idRegProceso = bitacora.regProceso";
            /* + " AND cm.creationDate >= :dateStart"
             + " AND cm.creationDate <= :dateFinish";*/
 }
