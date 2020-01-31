@@ -19,7 +19,7 @@ public class CMMedicamentos {
 	private int idMedicamento;
 	//ID_SINIESTRO
 	@ManyToOne
-	@JoinColumn(name = "siniestro")
+	@JoinColumn(name = "ID_SINIESTRO")
 	CMSiniestros siniestro;
 	
 	@Column(name="PROVEEDOR")

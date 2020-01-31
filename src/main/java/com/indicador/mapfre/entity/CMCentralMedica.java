@@ -2,6 +2,7 @@ package com.indicador.mapfre.entity;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,23 +21,25 @@ import org.hibernate.annotations.CascadeType;
 public class CMCentralMedica {
 
 	@Id
-	private int idSolicitud;
+	private Long idSolicitud;
 	
 	@OneToMany(mappedBy = "centralMedica")
 	@Cascade(CascadeType.ALL)
 	private List<CMSiniestros> listSiniestros;
 	
 	@OneToMany(mappedBy = "centralMedica")
+	@Cascade(CascadeType.ALL)
 	private List<CMSdaValoracion>listSdaValoracion;
 	
 	@OneToMany(mappedBy = "centralMedica")
+	@Cascade(CascadeType.ALL)
 	private List<CMDocumentos >listDocumentos;
 	
 	@Column(name="COD_SECTOR")
-	private int codSector;
+	private Long codSector;
 	
 	@Column(name="ID_TIPO_SOLICITUD")
-	private int idTipoSolicitud;
+	private Long idTipoSolicitud;
 	
 	@Column(name="FOLIO")
 	private String folio;
@@ -76,7 +79,7 @@ public class CMCentralMedica {
 	private String habitacionAsignada;
 
 	@Column(name="NUMERO_POLIZA")
-	private int numeroPoliza;
+	private Long numeroPoliza;
 
 	@Column(name="RAMO")
 	private String ramo;
@@ -118,7 +121,7 @@ public class CMCentralMedica {
 	private String apellidoMaternoPaciente;
 	
 	@Column(name="NUMERO_RIESGO")
-	private int numeroRiesgo;
+	private Long numeroRiesgo;
 	
 	@Column(name="FECHA_NACIMIENTO_PACIENTE")
 	private String fechaNacimientoPaciente;
@@ -201,7 +204,7 @@ public class CMCentralMedica {
 	@Column(name="BASE_INDEMNIZACION")
 	private String baseIndemnizacion;
 	
-	@Column(name="MONTO_AUT_HOSPITA")
+	@Column(name="MONTO_AUT_HOSPITAL")
 	private String montoAutHospital;
 	
 	@Column(name="MONTO_CON_IVA")
@@ -225,8 +228,8 @@ public class CMCentralMedica {
 	@Column(name="DOMICILIO_PROVEEDOR")
 	private String domicilioProveedor;
 	
-	@Column(name="MONTO_AUTORIZADO_SDAVA")
-	private int montoAutorizadoSdava;
+	@Column(name="MONTO_AUTORIZADO_SDAVAL")
+	private BigDecimal montoAutorizadoSdava;
 	
 	@Column(name="FOLIO_RAM_SGAVAL")
 	private String folioRamSgaval;
@@ -267,17 +270,17 @@ public class CMCentralMedica {
 	@Column(name="CORREO_DICTAMINADOR")
 	private String correoDictaminador;
 	
-	@Column(name="FTASK_ID_TOMA_REPORTE")
-	private int ftaskIdTomaReporte;
+	@Column(name="TASK_ID_TOMA_REPORTE")
+	private Long taskIdTomaReporte;
 	
 	@Column(name="TASK_ID_ASIGNACION")
-	private int taskIdAsignacion;
+	private Long taskIdAsignacion;
 	
 	@Column(name="TASK_ID_DICTAMINACION")
-	private int taskIdDictaminacion;
+	private Long taskIdDictaminacion;
 	
 	@Column(name="TASK_ID_ACTUAL")
-	private int taskIdActual;
+	private Long taskIdActual;
 	
 	@Column(name="CREATION_DATE")
 	private String creationDate;
@@ -321,11 +324,11 @@ public class CMCentralMedica {
 	@Column(name="TRAMITADOR_REASIGNADO")
 	private String tramitadorReasignado;
 
-	public int getIdSolicitud() {
+	public Long getIdSolicitud() {
 		return idSolicitud;
 	}
 
-	public void setIdSolicitud(int idSolicitud) {
+	public void setIdSolicitud(Long idSolicitud) {
 		this.idSolicitud = idSolicitud;
 	}
 
@@ -353,19 +356,19 @@ public class CMCentralMedica {
 		this.listDocumentos = listDocumentos;
 	}
 
-	public int getCodSector() {
+	public Long getCodSector() {
 		return codSector;
 	}
 
-	public void setCodSector(int codSector) {
+	public void setCodSector(Long codSector) {
 		this.codSector = codSector;
 	}
 
-	public int getIdTipoSolicitud() {
+	public Long getIdTipoSolicitud() {
 		return idTipoSolicitud;
 	}
 
-	public void setIdTipoSolicitud(int idTipoSolicitud) {
+	public void setIdTipoSolicitud(Long idTipoSolicitud) {
 		this.idTipoSolicitud = idTipoSolicitud;
 	}
 
@@ -465,11 +468,11 @@ public class CMCentralMedica {
 		this.habitacionAsignada = habitacionAsignada;
 	}
 
-	public int getNumeroPoliza() {
+	public Long getNumeroPoliza() {
 		return numeroPoliza;
 	}
 
-	public void setNumeroPoliza(int numeroPoliza) {
+	public void setNumeroPoliza(Long numeroPoliza) {
 		this.numeroPoliza = numeroPoliza;
 	}
 
@@ -577,11 +580,11 @@ public class CMCentralMedica {
 		this.apellidoMaternoPaciente = apellidoMaternoPaciente;
 	}
 
-	public int getNumeroRiesgo() {
+	public Long getNumeroRiesgo() {
 		return numeroRiesgo;
 	}
 
-	public void setNumeroRiesgo(int numeroRiesgo) {
+	public void setNumeroRiesgo(Long numeroRiesgo) {
 		this.numeroRiesgo = numeroRiesgo;
 	}
 
@@ -865,11 +868,11 @@ public class CMCentralMedica {
 		this.domicilioProveedor = domicilioProveedor;
 	}
 
-	public int getMontoAutorizadoSdava() {
+	public BigDecimal getMontoAutorizadoSdava() {
 		return montoAutorizadoSdava;
 	}
 
-	public void setMontoAutorizadoSdava(int montoAutorizadoSdava) {
+	public void setMontoAutorizadoSdava(BigDecimal montoAutorizadoSdava) {
 		this.montoAutorizadoSdava = montoAutorizadoSdava;
 	}
 
@@ -977,35 +980,35 @@ public class CMCentralMedica {
 		this.correoDictaminador = correoDictaminador;
 	}
 
-	public int getFtaskIdTomaReporte() {
-		return ftaskIdTomaReporte;
+	public Long getTaskIdTomaReporte() {
+		return taskIdTomaReporte;
 	}
 
-	public void setFtaskIdTomaReporte(int ftaskIdTomaReporte) {
-		this.ftaskIdTomaReporte = ftaskIdTomaReporte;
+	public void setTaskIdTomaReporte(Long taskIdTomaReporte) {
+		this.taskIdTomaReporte = taskIdTomaReporte;
 	}
 
-	public int getTaskIdAsignacion() {
+	public Long getTaskIdAsignacion() {
 		return taskIdAsignacion;
 	}
 
-	public void setTaskIdAsignacion(int taskIdAsignacion) {
+	public void setTaskIdAsignacion(Long taskIdAsignacion) {
 		this.taskIdAsignacion = taskIdAsignacion;
 	}
 
-	public int getTaskIdDictaminacion() {
+	public Long getTaskIdDictaminacion() {
 		return taskIdDictaminacion;
 	}
 
-	public void setTaskIdDictaminacion(int taskIdDictaminacion) {
+	public void setTaskIdDictaminacion(Long taskIdDictaminacion) {
 		this.taskIdDictaminacion = taskIdDictaminacion;
 	}
 
-	public int getTaskIdActual() {
+	public Long getTaskIdActual() {
 		return taskIdActual;
 	}
 
-	public void setTaskIdActual(int taskIdActual) {
+	public void setTaskIdActual(Long taskIdActual) {
 		this.taskIdActual = taskIdActual;
 	}
 
@@ -1120,6 +1123,7 @@ public class CMCentralMedica {
 	public void setTramitadorReasignado(String tramitadorReasignado) {
 		this.tramitadorReasignado = tramitadorReasignado;
 	}
+
 	
 	
 }

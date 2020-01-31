@@ -12,6 +12,9 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 
 
 @Entity
@@ -27,22 +30,26 @@ public class CMSiniestros {
 	private CMCentralMedica centralMedica;
 	
 	@OneToMany(mappedBy = "siniestro")
+	@Cascade(CascadeType.ALL)
 	private List<CMCpt> listCpt;
 	
 	@OneToMany(mappedBy = "siniestro")
+	@Cascade(CascadeType.ALL)
 	private List<CMHonorariosMed> listHonorarios;
 	
 	@OneToMany(mappedBy = "siniestro")
+	@Cascade(CascadeType.ALL)
 	private List<CMMedicamentos> listMedicamentos;
 	
 	@OneToMany(mappedBy = "siniestro")
+	@Cascade(CascadeType.ALL)
 	private List<CMServicios> listServicios;
 	
 	@Column(name="ESTADO")
 	private String estado;
 	
 	@Column(name="NUMERO_SINIESTRO")
-	private int numeroSiniestro;
+	private Long numeroSiniestro;
 	
 	@Column(name="TIPO_SINIESTRO")
 	private String tipoSiniestro;
@@ -51,7 +58,7 @@ public class CMSiniestros {
 	private int porcentajeEdoCta;
 	
 	@Column(name="MONTO_SINIESTRO")
-	private int montoSiniestro;
+	private Long montoSiniestro;
 	
 	@Column(name="FOLIO_RAM")
 	private String folioRam;
@@ -84,13 +91,13 @@ public class CMSiniestros {
 	private String tipoReserva;
 	
 	@Column(name="MONTO_RESERVA")
-	private int montoReserva;
+	private Long montoReserva;
 	
 	@Column(name="REMANENTE_SUMA_ASEG")
-	private int remanenteSumaAseg;
+	private Long remanenteSumaAseg;
 	
 	@Column(name="TOTAL_AUTORIZADO_HM")
-	private int totalAutorizadoHm;
+	private Long totalAutorizadoHm;
 	
 	@Column(name="FOLIO_RAM_MED")
 	private String folioRamMed;
@@ -120,43 +127,43 @@ public class CMSiniestros {
 	private String totalAutorizadoServ;
 	
 	@Column(name="DEDUCIBLE_CONTRATADO")
-	private int deducibleContratado;
+	private Long deducibleContratado;
 	
 	@Column(name="REDUCCION_DEDUCIBLE")
-	private int reduccionDeducible;
+	private Long reduccionDeducible;
 	
 	@Column(name="INCREMENTO_DEDUCIBLE")
-	private int incrementoDeducible;
+	private Long incrementoDeducible;
 	
 	@Column(name="TOTAL_DEDUCIBLE")
-	private int totalDeducible;
+	private Long totalDeducible;
 	
 	@Column(name="COASEGURO_CONTRATADO")
-	private int coaseguroContratado;
+	private Long coaseguroContratado;
 	
 	@Column(name="RED_COASEGURO_HOSP")
-	private int redCoaSeguroHosp;
+	private Long redCoaSeguroHosp;
 	
 	@Column(name="INC_COASEGURO_HOSP")
-	private int incCoaseguroHosp;
+	private Long incCoaseguroHosp;
 	
 	@Column(name="TOPE_COASEGURO")
-	private int topeCoaseguro;
+	private Long topeCoaseguro;
 	
 	@Column(name="TIPO_TOPE_COASEGURO")
 	private String tipoTopeCoaseguro;
 	
 	@Column(name="TOTAL_COASEGURO_HOSP")
-	private int totalCoaseguroHosp;
+	private Long totalCoaseguroHosp;
 	
 	@Column(name="COASEGURO_MEDICO")
-	private int coaseguroMedico;
+	private Long coaseguroMedico;
 	
 	@Column(name="RED_COASEGURO_MED")
-	private int redCoaseguroMed;
+	private Long redCoaseguroMed;
 	
 	@Column(name="TOTAL_COASEGURO_MED")
-	private int totalCoaseguroMed;
+	private Long totalCoaseguroMed;
 	
 	@Column(name="CREATION_DATE")
 	private String creationDate;
@@ -253,11 +260,11 @@ public class CMSiniestros {
 		this.estado = estado;
 	}
 
-	public int getNumeroSiniestro() {
+	public Long getNumeroSiniestro() {
 		return numeroSiniestro;
 	}
 
-	public void setNumeroSiniestro(int numeroSiniestro) {
+	public void setNumeroSiniestro(Long numeroSiniestro) {
 		this.numeroSiniestro = numeroSiniestro;
 	}
 
@@ -277,11 +284,11 @@ public class CMSiniestros {
 		this.porcentajeEdoCta = porcentajeEdoCta;
 	}
 
-	public int getMontoSiniestro() {
+	public Long getMontoSiniestro() {
 		return montoSiniestro;
 	}
 
-	public void setMontoSiniestro(int montoSiniestro) {
+	public void setMontoSiniestro(Long montoSiniestro) {
 		this.montoSiniestro = montoSiniestro;
 	}
 
@@ -365,27 +372,27 @@ public class CMSiniestros {
 		this.tipoReserva = tipoReserva;
 	}
 
-	public int getMontoReserva() {
+	public Long getMontoReserva() {
 		return montoReserva;
 	}
 
-	public void setMontoReserva(int montoReserva) {
+	public void setMontoReserva(Long montoReserva) {
 		this.montoReserva = montoReserva;
 	}
 
-	public int getRemanenteSumaAseg() {
+	public Long getRemanenteSumaAseg() {
 		return remanenteSumaAseg;
 	}
 
-	public void setRemanenteSumaAseg(int remanenteSumaAseg) {
+	public void setRemanenteSumaAseg(Long remanenteSumaAseg) {
 		this.remanenteSumaAseg = remanenteSumaAseg;
 	}
 
-	public int getTotalAutorizadoHm() {
+	public Long getTotalAutorizadoHm() {
 		return totalAutorizadoHm;
 	}
 
-	public void setTotalAutorizadoHm(int totalAutorizadoHm) {
+	public void setTotalAutorizadoHm(Long totalAutorizadoHm) {
 		this.totalAutorizadoHm = totalAutorizadoHm;
 	}
 
@@ -461,67 +468,67 @@ public class CMSiniestros {
 		this.totalAutorizadoServ = totalAutorizadoServ;
 	}
 
-	public int getDeducibleContratado() {
+	public Long getDeducibleContratado() {
 		return deducibleContratado;
 	}
 
-	public void setDeducibleContratado(int deducibleContratado) {
+	public void setDeducibleContratado(Long deducibleContratado) {
 		this.deducibleContratado = deducibleContratado;
 	}
 
-	public int getReduccionDeducible() {
+	public Long getReduccionDeducible() {
 		return reduccionDeducible;
 	}
 
-	public void setReduccionDeducible(int reduccionDeducible) {
+	public void setReduccionDeducible(Long reduccionDeducible) {
 		this.reduccionDeducible = reduccionDeducible;
 	}
 
-	public int getIncrementoDeducible() {
+	public Long getIncrementoDeducible() {
 		return incrementoDeducible;
 	}
 
-	public void setIncrementoDeducible(int incrementoDeducible) {
+	public void setIncrementoDeducible(Long incrementoDeducible) {
 		this.incrementoDeducible = incrementoDeducible;
 	}
 
-	public int getTotalDeducible() {
+	public Long getTotalDeducible() {
 		return totalDeducible;
 	}
 
-	public void setTotalDeducible(int totalDeducible) {
+	public void setTotalDeducible(Long totalDeducible) {
 		this.totalDeducible = totalDeducible;
 	}
 
-	public int getCoaseguroContratado() {
+	public Long getCoaseguroContratado() {
 		return coaseguroContratado;
 	}
 
-	public void setCoaseguroContratado(int coaseguroContratado) {
+	public void setCoaseguroContratado(Long coaseguroContratado) {
 		this.coaseguroContratado = coaseguroContratado;
 	}
 
-	public int getRedCoaSeguroHosp() {
+	public Long getRedCoaSeguroHosp() {
 		return redCoaSeguroHosp;
 	}
 
-	public void setRedCoaSeguroHosp(int redCoaSeguroHosp) {
+	public void setRedCoaSeguroHosp(Long redCoaSeguroHosp) {
 		this.redCoaSeguroHosp = redCoaSeguroHosp;
 	}
 
-	public int getIncCoaseguroHosp() {
+	public Long getIncCoaseguroHosp() {
 		return incCoaseguroHosp;
 	}
 
-	public void setIncCoaseguroHosp(int incCoaseguroHosp) {
+	public void setIncCoaseguroHosp(Long incCoaseguroHosp) {
 		this.incCoaseguroHosp = incCoaseguroHosp;
 	}
 
-	public int getTopeCoaseguro() {
+	public Long getTopeCoaseguro() {
 		return topeCoaseguro;
 	}
 
-	public void setTopeCoaseguro(int topeCoaseguro) {
+	public void setTopeCoaseguro(Long topeCoaseguro) {
 		this.topeCoaseguro = topeCoaseguro;
 	}
 
@@ -533,35 +540,35 @@ public class CMSiniestros {
 		this.tipoTopeCoaseguro = tipoTopeCoaseguro;
 	}
 
-	public int getTotalCoaseguroHosp() {
+	public Long getTotalCoaseguroHosp() {
 		return totalCoaseguroHosp;
 	}
 
-	public void setTotalCoaseguroHosp(int totalCoaseguroHosp) {
+	public void setTotalCoaseguroHosp(Long totalCoaseguroHosp) {
 		this.totalCoaseguroHosp = totalCoaseguroHosp;
 	}
 
-	public int getCoaseguroMedico() {
+	public Long getCoaseguroMedico() {
 		return coaseguroMedico;
 	}
 
-	public void setCoaseguroMedico(int coaseguroMedico) {
+	public void setCoaseguroMedico(Long coaseguroMedico) {
 		this.coaseguroMedico = coaseguroMedico;
 	}
 
-	public int getRedCoaseguroMed() {
+	public Long getRedCoaseguroMed() {
 		return redCoaseguroMed;
 	}
 
-	public void setRedCoaseguroMed(int redCoaseguroMed) {
+	public void setRedCoaseguroMed(Long redCoaseguroMed) {
 		this.redCoaseguroMed = redCoaseguroMed;
 	}
 
-	public int getTotalCoaseguroMed() {
+	public Long getTotalCoaseguroMed() {
 		return totalCoaseguroMed;
 	}
 
-	public void setTotalCoaseguroMed(int totalCoaseguroMed) {
+	public void setTotalCoaseguroMed(Long totalCoaseguroMed) {
 		this.totalCoaseguroMed = totalCoaseguroMed;
 	}
 

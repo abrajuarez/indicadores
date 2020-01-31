@@ -17,7 +17,7 @@ public class CMCpt {
 	private Long idCpt;
 	//ID_SINIESTRO
 	@ManyToOne
-	@JoinColumn(name = "siniestro")
+	@JoinColumn(name = "ID_SINIESTRO")
 	CMSiniestros siniestro;
 	
 	@Column(name="CODIGO_CPT")

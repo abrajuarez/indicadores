@@ -21,7 +21,7 @@ public class CMServicios {
 	
 	//ID_SINIESTRO
 	@ManyToOne
-	@JoinColumn(name = "siniestro")
+	@JoinColumn(name = "ID_SINIESTRO")
 	CMSiniestros siniestro;
 	
 	@Column(name="RAZON_SOCIAL")
