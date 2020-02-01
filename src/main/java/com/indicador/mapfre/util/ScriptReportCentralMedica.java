@@ -7,7 +7,7 @@ public class ScriptReportCentralMedica {
 			                   ",cm.nivelHospitalario,cm.fechaIngreso,cm.urgencia,cm.habitacionAsignada,cm.numeroPoliza,cm.ramo,cm.polizaPagadaHasta " + 
 			                   ",cm.inicioVigencia,cm.finVigencia,cm.polProcesoEmision,cm.nombreContratante,cm.razonSocialContratante " + 
 			                   ",cm.categoriaAsegurado,cm.recienNacido,cm.primerNombrePaciente,cm.segundoNombrePaciente " + 
-			                   ",cm.apellidoPaternoPaciente,cm.apellidoMaternoPaciente,cm.numeroRiesgo,cm.generoPaciente " + 
+			                   ",cm.apellidoPaternoPaciente,cm.apellidoMaternoPaciente,cm.fechaNacimientoPaciente, cm.numeroRiesgo,cm.generoPaciente " + 
 			                   ",cm.titularPoliza,cm.medicoRed,cm.nombreMedico,cm.especialidadMedico,cm.redProveedor " + 
 			                   ",cm.sintomasDiagnostico,cm.femiliarResponsable,cm.telFamiliarResponsable,cm.nombreReportante " + 
 			                   ",cm.telefonoReportante,cm.emailReportante,cm.observacionesIngreso,cm.estatusTramite,cm.tienePrefacturas " + 
@@ -57,4 +57,24 @@ public class ScriptReportCentralMedica {
             + " AND  proceso.idRegProceso = bitacora.regProceso";
            /* + " AND cm.creationDate >= :dateStart"
             + " AND cm.creationDate <= :dateFinish";*/
+	
+	
+	public static String QUERY = "SELECT cm,sin"
+            + " FROM CMCentralMedica cm,"
+            + " CMSiniestros sin,"
+            + " CMDocumentos doc,"
+            + " CMSdaValoracion valoracion,"
+            + " CMHonorariosMed honorariosmd,"
+            + " CMMedicamentos medicamento,"
+            + " CMServicios servicio,"
+            + " CMCpt cpt "
+            + " WHERE cm.idSolicitud = sin.centralMedica"
+            + " AND cm.idSolicitud = doc.centralMedica"
+            + " AND cm.idSolicitud = valoracion.centralMedica "
+            + " AND sin.idSiniestro = honorariosmd.siniestro"
+            + " AND sin.idSiniestro = medicamento.siniestro"
+            + " AND sin.idSiniestro = servicio.siniestro"
+            + " AND sin.idSiniestro = cpt.siniestro"
+            + " AND cm.creationDate >= :dateStart"
+            + " AND cm.creationDate <= :dateFinish";
 }

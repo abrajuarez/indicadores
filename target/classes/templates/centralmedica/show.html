@@ -32,7 +32,7 @@
 										aria-hidden="true"></span> <span class="sr-only">Reporte</span>
 									Reporte de Central Medica 
 								</div>
-								<form id="yourForm" th:action="@{/indicador_centralmedica_show}"
+								<form id="yourForm" th:action="@{/download/centralmedica.xlsx}"
 									th:object="${datesmodel}" method="post">
 									<div th:replace="componentes/dates"></div>
 								</form>

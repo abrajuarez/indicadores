@@ -1,5 +1,6 @@
 package com.indicador.mapfre.util;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
@@ -53,6 +54,26 @@ public class StringUtil {
 	
 	public static Long convertObjectLong(Object obj) {
 		return Long.parseLong(obj.toString());
+	}
+	
+	public static String convertObjetcToString(Object obj) {
+		Optional<Object> opt = Optional.ofNullable(obj);
+		return opt.orElse("")+"";
+	}
+	
+	public static Long convertObjetcToLong(Object obj) {
+		Optional<Object> opt = Optional.ofNullable(obj);
+		return Long.parseLong(opt.orElse(0L).toString());
+	}
+	
+	public static BigDecimal convertObjetcToBigDecimal(Object obj) {
+		Optional<Object> opt = Optional.ofNullable(obj);
+		return new BigDecimal(opt.orElse(0).toString());
+	}
+	
+	public static int convertObjetcToInt(Object obj) {
+		Optional<Object> opt = Optional.ofNullable(obj);
+		return Integer.parseInt(opt.orElse(0).toString());
 	}
 	
 	public static String validStringIsNull(String cadena) {

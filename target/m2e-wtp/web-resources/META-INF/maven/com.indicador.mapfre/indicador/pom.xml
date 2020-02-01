@@ -87,10 +87,13 @@
 			<version>11.2.0.1.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-scratchpad -->
+		<!--dependency> <groupId>org.apache.poi</groupId> <artifactId>poi-scratchpad</artifactId> 
+			<version>4.1.0</version> </dependency -->
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-scratchpad</artifactId>
-			<version>4.1.0</version>
+			<artifactId>poi-ooxml</artifactId>
+			<version>4.1.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
 		<dependency>
@@ -125,12 +128,12 @@
 			</exclusions>
 		</dependency>
 		<!-- We need to include the javax.servlet API specs, the implementation 
-         will be provided by Wildfly / JBoss / Tomcat -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
+			will be provided by Wildfly / JBoss / Tomcat -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

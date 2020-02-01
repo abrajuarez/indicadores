@@ -86,15 +86,16 @@ public class CMCentralMedicaModel {
 	
 	private String apellidoMaternoPaciente;
 	
-	private Long numeroRiesgo;
-	
 	private String fechaNacimientoPaciente;
+	
+	private Long numeroRiesgo;
 	
 	private String generoPaciente;
 	
 	private String titularPoliza;
 	
 	private String medicoRed;
+	
 	
 	private String nombreMedico;
 	
@@ -601,6 +602,13 @@ public class CMCentralMedicaModel {
 		this.apellidoMaternoPaciente = apellidoMaternoPaciente;
 	}
 
+	public String getFechaNacimientoPaciente() {
+		return fechaNacimientoPaciente;
+	}
+
+	public void setFechaNacimientoPaciente(String fechaNacimientoPaciente) {
+		this.fechaNacimientoPaciente = fechaNacimientoPaciente;
+	}
 	public Long getNumeroRiesgo() {
 		return numeroRiesgo;
 	}
@@ -609,13 +617,7 @@ public class CMCentralMedicaModel {
 		this.numeroRiesgo = numeroRiesgo;
 	}
 
-	public String getFechaNacimientoPaciente() {
-		return fechaNacimientoPaciente;
-	}
-
-	public void setFechaNacimientoPaciente(String fechaNacimientoPaciente) {
-		this.fechaNacimientoPaciente = fechaNacimientoPaciente;
-	}
+	
 
 	public String getGeneroPaciente() {
 		return generoPaciente;
@@ -1745,6 +1747,10 @@ public class CMCentralMedicaModel {
 		this.totalAutorizado = totalAutorizado;
 	}
 
+	public void setSertotalAutorizado(BigDecimal sertotalAutorizado) {
+		this.sertotalAutorizado = sertotalAutorizado;
+	}
+
 	public String getMindiceProvider() {
 		return mindiceProvider;
 	}
@@ -1797,7 +1803,7 @@ public class CMCentralMedicaModel {
 		return sertotalAutorizado;
 	}
 
-	public void setSertotalAutorizado(BigDecimal sertotalAutorizado) {
+	public void setClaveEstatus(BigDecimal sertotalAutorizado) {
 		this.sertotalAutorizado = sertotalAutorizado;
 	}
 
