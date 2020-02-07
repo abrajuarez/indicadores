@@ -32,6 +32,7 @@ import com.indicador.mapfre.entity.CMSiniestros;
 import com.indicador.mapfre.model.DateCMModel;
 import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.repository.CMCptRepository;
+import com.indicador.mapfre.repository.CMDocumentosRepository;
 import com.indicador.mapfre.repository.CMHonorariosMedRepository;
 import com.indicador.mapfre.repository.CMMedicamentosRepository;
 import com.indicador.mapfre.repository.CMRegProcesoRepository;
@@ -41,6 +42,7 @@ import com.indicador.mapfre.repository.CMSiniestrosRepository;
 import com.indicador.mapfre.service.CMBitacoraService;
 import com.indicador.mapfre.service.CMCentralMedicaService;
 import com.indicador.mapfre.util.CMReportUtil;
+import com.indicador.mapfre.util.DateUtil;
 import com.indicador.mapfre.util.StringUtil;
 import com.indicador.mapfre.util.xls.CellStyleUtil;
 import org.springframework.data.domain.Sort;
@@ -76,6 +78,9 @@ public class CMCentralMedicaReport {
 	
 	@Autowired
 	private CMSdaValoracionRepository sdaRepository;
+	
+	@Autowired
+	private CMDocumentosRepository docRepository;
 
 	public ByteArrayInputStream create(DateCMModel datesmodel) throws IOException {
 		logger.info("methods create ");
@@ -95,7 +100,8 @@ public class CMCentralMedicaReport {
 	private void createSheetOne(Workbook workbook, DateCMModel dates) {
 		logger.info("methods createSheetOne ");
 		Sheet sheet = workbook.createSheet("central medica");
-		String dateFinish = "30/01/20";
+		logger.info("methods createSheetOne  fecha 15 = "+DateUtil.plusDay(dates.getDateStart(), 15l));
+		String dateFinish = DateUtil.plusDay(dates.getDateStart(), 15l);//"30/01/20";
 		List<CMCentralMedica> list = cmservice.findAllByCreationDate(dates.getDateStart(), dateFinish);
 		CellStyleUtil style = new CellStyleUtil(workbook);
 		cellTitle(sheet, style);
@@ -413,8 +419,13 @@ public class CMCentralMedicaReport {
 	}
 	
 	private void documento(Row row, CMCentralMedica cm, CellStyleUtil style, Sheet sheet) {
+		long id = cm.getIdSolicitud();
+		Pageable limit = PageRequest.of(0, 1, Sort.by("idDocumento"));
+		List<String>listDoc = docRepository.findFirstElementBYIdSolicitud(limit, id);
+		if(listDoc.size() > 0) {
 		Cell cellSolTipoDoc = row.createCell(262);
-		value(row, cellSolTipoDoc  ,262, "Documento", style, sheet);
+		value(row, cellSolTipoDoc  ,262, listDoc.get(0), style, sheet);
+		}
 	}
 
 	private void siniestro(Row row, CMCentralMedica cm, CellStyleUtil style, Sheet sheet) {
