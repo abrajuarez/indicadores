@@ -20,14 +20,14 @@ public class CMRegProceso {
 	@OneToMany(mappedBy = "regProceso")
 	private List<CMBitacora>listBitacora;
 	
-	@OneToMany(mappedBy = "regProceso")
-	private List<CMComentProc>listComentProc;
+	/*@OneToMany(mappedBy = "regProceso")
+	private List<CMComentProc>listComentProc;*/
 	
 	@Column(name="COD_SECTOR")
-	private int codSector;
+	private Long codSector;
 	
 	@Column(name="COD_PROCESO")
-	private int codProceso;
+	private Long codProceso;
 	
 	@Column(name="ID_SOLICITUD")
 	private Long idSolicitud;
@@ -60,27 +60,27 @@ public class CMRegProceso {
 		this.listBitacora = listBitacora;
 	}
 
-	public List<CMComentProc> getListComentProc() {
+	/*public List<CMComentProc> getListComentProc() {
 		return listComentProc;
 	}
 
 	public void setListComentProc(List<CMComentProc> listComentProc) {
 		this.listComentProc = listComentProc;
-	}
+	}*/
 
-	public int getCodSector() {
+	public Long getCodSector() {
 		return codSector;
 	}
 
-	public void setCodSector(int codSector) {
+	public void setCodSector(Long codSector) {
 		this.codSector = codSector;
 	}
 
-	public int getCodProceso() {
+	public Long getCodProceso() {
 		return codProceso;
 	}
 
-	public void setCodProceso(int codProceso) {
+	public void setCodProceso(Long codProceso) {
 		this.codProceso = codProceso;
 	}
 

@@ -30,11 +30,11 @@
 							<div class="alert alert-info" role="alert">
 									<span class="glyphicon glyphicon-stats"
 										aria-hidden="true"></span> <span class="sr-only">Reporte</span>
-									Reporte de Central Medica 
+									Reporte de Central Medica, Ingrese la fecha a calcular solo se calcularan 15 dias posteriores a la fecha ingresada
 								</div>
-								<form id="yourForm" th:action="@{/indicador_centralmedica_show}"
+								<form id="yourForm" th:action="@{/download/centralmedica.xlsx}"
 									th:object="${datesmodel}" method="post">
-									<div th:replace="componentes/dates"></div>
+									<div th:replace="centralmedica/form"></div>
 								</form>
 							</div>
 						</div>

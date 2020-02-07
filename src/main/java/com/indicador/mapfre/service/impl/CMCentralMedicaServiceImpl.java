@@ -45,7 +45,7 @@ public class CMCentralMedicaServiceImpl implements CMCentralMedicaService {
 	@Override
 	public List<CMCentralMedica> findAllByCreationDate(String dateStart, String dateFinish) {
 		logger.info("Method:findAllByCreationDate");
-		return centralRepository.findByCreationDate(dateStart, dateFinish);
+		return centralRepository.findByCreation(dateStart, dateFinish);
 	}
 	
 	@Override

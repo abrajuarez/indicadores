@@ -22,7 +22,7 @@ public class CMBitacora {
 	CMRegProceso regProceso;
 	
 	@Column(name="COD_SECTOR")
-	private int codSector;
+	private Long codSector;
 	
 	@Column(name="NOMBRE_PROCESO")
 	private String nombreProceso;
@@ -73,11 +73,11 @@ public class CMBitacora {
 		this.regProceso = regProceso;
 	}
 
-	public int getCodSector() {
+	public Long getCodSector() {
 		return codSector;
 	}
 
-	public void setCodSector(int codSector) {
+	public void setCodSector(Long codSector) {
 		this.codSector = codSector;
 	}
 

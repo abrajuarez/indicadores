@@ -34,7 +34,7 @@ public class CMCpt {
 	@Column(name="CREATED_BY")
 	private String createdBy;
 	
-	@Column(name="LAST_UPDATED_DATE")
+	@Column(name="LAST_UPDATE_DATE")
 	private String lastUpdatedDate;
 	
 	@Column(name="LAST_UPDATED_BY")

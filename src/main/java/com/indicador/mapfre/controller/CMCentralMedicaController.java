@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.indicador.mapfre.entity.CMCentralMedica;
+import com.indicador.mapfre.model.DateCMModel;
 import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.service.CMCentralMedicaService;
 import com.indicador.mapfre.xls.CMCentralMedicaReport;
@@ -38,32 +39,34 @@ public class CMCentralMedicaController {
 
 	@GetMapping("/indicador_centralmedica")
 	public String index(Model model) {
-		model.addAttribute("datesmodel", new DateModel());
+		model.addAttribute("datesmodel", new DateCMModel());
 		return "centralmedica/index";
 	}
 	
-	@PostMapping("/indicador_centralmedica_show")
+	@GetMapping("/indicador_centralmedica_show")
 	public String show(Model model, @Valid DateModel datesmodel, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			logger.error("Error method show not valid date "+bindingResult);
             return "redirect:indicador_centralmedica";
         }
-		List<CMCentralMedica> listCentral = centralService.findAllByCreationDate(datesmodel.getDateStart(), datesmodel.getDateFinish());
+		/*List<CMCentralMedica> listCentral = centralService.findAllByCreationDate(datesmodel.getDateStart(), datesmodel.getDateFinish());
 		for(int i = 0; i<listCentral.size(); i++) {
 			logger.info("Method: show "+listCentral.get(i).getListSiniestros().get(0).getCoaseguroContratado());
-		}
+		}*/
 		
 		model.addAttribute("datesmodel", new DateModel());
-		model.addAttribute("listcentral",listCentral );
+		//model.addAttribute("listcentral",listCentral );
 		return "centralmedica/show";
 	}
 	
 	@PostMapping("/download/centralmedica.xlsx")
-	public ResponseEntity<InputStreamResource> excelCustomersReport(@ModelAttribute("datesmodel") DateModel datesmodel)
+	public ResponseEntity<InputStreamResource> excelCustomersReport(@Valid DateCMModel datesmodel,BindingResult bindingResult)
 			throws IOException {
+		if (bindingResult.hasErrors()) {
+			logger.error("Error in Method excelCustomersReport error = ");
+		}
 		String dateStart = datesmodel.getDateStart();
-		String dateFinish = datesmodel.getDateFinish();
-		logger.info("entro reques2 xls-> " + dateStart + " final " + dateFinish);
+		logger.info("entro reques2 xls-> " + dateStart );
 		ByteArrayInputStream in = report.create(datesmodel);
 		// return IOUtils.toByteArray(in);
 

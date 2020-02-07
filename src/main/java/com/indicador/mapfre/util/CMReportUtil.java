@@ -2,8 +2,31 @@ package com.indicador.mapfre.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CMReportUtil {
+	
+	public static String getSector(Long codSector) {
+		Optional<Long> opt = Optional.ofNullable(codSector);
+		Long result = opt.orElse(0L);
+		
+		if(result == 1) {
+			return "VIDA";
+		}
+		if(result == 2) {
+			return "AyE";
+		}
+		if(result == 3) {
+			return "DAÑOS";
+		}
+		if(result == 4) {
+		return "AUTOS";
+		}
+		return "";
+		
+	}
+	
+	
 
 	public static List<String> title(){
 		List<String> list = new ArrayList<String>();

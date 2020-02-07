@@ -22,12 +22,15 @@ import org.hibernate.annotations.CascadeType;
 public class CMSiniestros {
 
 	@Id
-	private int idSiniestro;
+	private Long idSiniestro;
 	
 	@ManyToOne
 	@MapsId("ID_SOLICITUD")
 	@JoinColumn(name="ID_SOLICITUD",insertable = false, updatable = false)
 	private CMCentralMedica centralMedica;
+	
+	/*@Column(name="ID_SOLICITUD")
+	private Long idSolicitud;*/
 	
 	@OneToMany(mappedBy = "siniestro")
 	@Cascade(CascadeType.ALL)
@@ -55,7 +58,7 @@ public class CMSiniestros {
 	private String tipoSiniestro;
 	
 	@Column(name="PORCENTAJE_EDO_CTA")
-	private int porcentajeEdoCta;
+	private BigDecimal porcentajeEdoCta;
 	
 	@Column(name="MONTO_SINIESTRO")
 	private Long montoSiniestro;
@@ -204,11 +207,11 @@ public class CMSiniestros {
 	@Column(name="TOTAL_SERVICIOS")
 	private String totalServicios;
 
-	public int getIdSiniestro() {
+	public Long getIdSiniestro() {
 		return idSiniestro;
 	}
 
-	public void setIdSiniestro(int idSiniestro) {
+	public void setIdSiniestro(Long idSiniestro) {
 		this.idSiniestro = idSiniestro;
 	}
 
@@ -219,10 +222,20 @@ public class CMSiniestros {
 	public void setCentralMedica(CMCentralMedica centralMedica) {
 		this.centralMedica = centralMedica;
 	}
+	
+	
 
 	public List<CMCpt> getListCpt() {
 		return listCpt;
 	}
+
+	/*public Long getIdSolicitud() {
+		return idSolicitud;
+	}
+
+	public void setIdSolicitud(Long idSolicitud) {
+		this.idSolicitud = idSolicitud;
+	}*/
 
 	public void setListCpt(List<CMCpt> listCpt) {
 		this.listCpt = listCpt;
@@ -276,11 +289,11 @@ public class CMSiniestros {
 		this.tipoSiniestro = tipoSiniestro;
 	}
 
-	public int getPorcentajeEdoCta() {
+	public BigDecimal getPorcentajeEdoCta() {
 		return porcentajeEdoCta;
 	}
 
-	public void setPorcentajeEdoCta(int porcentajeEdoCta) {
+	public void setPorcentajeEdoCta(BigDecimal porcentajeEdoCta) {
 		this.porcentajeEdoCta = porcentajeEdoCta;
 	}
 

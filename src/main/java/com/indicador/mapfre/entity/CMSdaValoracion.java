@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class CMSdaValoracion {
 
 	@Id
-	private int IdSdavaloracion;
+	private Long IdSdavaloracion;
 	
 	@ManyToOne
 	@JoinColumn(name="ID_SOLICITUD")
@@ -30,7 +30,7 @@ public class CMSdaValoracion {
 	private String medicoTratante;
 	
 	@Column(name="MONTO_AUTORIZADO")
-	private int montoAutorizado;
+	private Long montoAutorizado;
 	
 	@Column(name="FOLIO_RAM")
 	private String folioRam;
@@ -56,11 +56,11 @@ public class CMSdaValoracion {
 	@Column(name="INDICE_PROVIDER")
 	private String indiceProvider;
 
-	public int getIdSdavaloracion() {
+	public Long getIdSdavaloracion() {
 		return IdSdavaloracion;
 	}
 
-	public void setIdSdavaloracion(int idSdavaloracion) {
+	public void setIdSdavaloracion(Long idSdavaloracion) {
 		IdSdavaloracion = idSdavaloracion;
 	}
 
@@ -71,6 +71,8 @@ public class CMSdaValoracion {
 	public void setCentralMedica(CMCentralMedica centralMedica) {
 		this.centralMedica = centralMedica;
 	}
+
+	
 
 	public String getIntegrante() {
 		return integrante;
@@ -96,11 +98,11 @@ public class CMSdaValoracion {
 		this.medicoTratante = medicoTratante;
 	}
 
-	public int getMontoAutorizado() {
+	public Long getMontoAutorizado() {
 		return montoAutorizado;
 	}
 
-	public void setMontoAutorizado(int montoAutorizado) {
+	public void setMontoAutorizado(Long montoAutorizado) {
 		this.montoAutorizado = montoAutorizado;
 	}
 

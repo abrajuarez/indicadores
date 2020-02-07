@@ -186,6 +186,17 @@ public class CMCentralMedica {
 	@Column(name="TIPO_MONEDA")
 	private String tipoMoneda;
 	
+	@Column(name="FECHA_PREALTA_HOSPITALARIA")
+	private String fechaPrealtaHospitalaria;
+	
+	public String getFechaPrealtaHospitalaria() {
+		return fechaPrealtaHospitalaria;
+	}
+
+	public void setFechaPrealtaHospitalaria(String fechaPrealtaHospitalaria) {
+		this.fechaPrealtaHospitalaria = fechaPrealtaHospitalaria;
+	}
+
 	@Column(name="FECHA_EGRESO_HOSPITALARIA")
 	private String fechaEgresoHospitalaria;
 	
@@ -332,13 +343,13 @@ public class CMCentralMedica {
 		this.idSolicitud = idSolicitud;
 	}
 
-	public List<CMSiniestros> getListSiniestros() {
+	/*public List<CMSiniestros> getListSiniestros() {
 		return listSiniestros;
 	}
 
 	public void setListSiniestros(List<CMSiniestros> listSiniestros) {
 		this.listSiniestros = listSiniestros;
-	}
+	}*/
 
 	public List<CMSdaValoracion> getListSdaValoracion() {
 		return listSdaValoracion;
@@ -1122,6 +1133,14 @@ public class CMCentralMedica {
 
 	public void setTramitadorReasignado(String tramitadorReasignado) {
 		this.tramitadorReasignado = tramitadorReasignado;
+	}
+
+	public List<CMSiniestros> getListSiniestros() {
+		return listSiniestros;
+	}
+
+	public void setListSiniestros(List<CMSiniestros> listSiniestros) {
+		this.listSiniestros = listSiniestros;
 	}
 
 	

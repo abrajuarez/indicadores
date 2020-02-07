@@ -37,5 +37,7 @@ public interface CMCentralMedicaRepository extends JpaRepository<CMCentralMedica
 	@Query(REPORTQUERY)
 	List<CMCentralMedica> findByCreationDate(@Param("dateStart")String dateStart,@Param("dateFinish") String dateFinish);
 
+	@Query("SELECT cm FROM CMCentralMedica cm WHERE cm.creationDate >= :dateStart AND cm.creationDate <= :dateFinish")
+	List<CMCentralMedica> findByCreation(@Param("dateStart")String dateStart,@Param("dateFinish") String dateFinish);
 
 }
