@@ -5,15 +5,151 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import com.indicador.mapfre.model.Report2CentralMedicaModel;
+import com.indicador.mapfre.model.ReportCentralMedicaModel;
 
+
+@SqlResultSetMapping(
+		name = "CentralValueMapping",
+		classes = @ConstructorResult(
+				targetClass = ReportCentralMedicaModel.class,
+				columns = {
+						@ColumnResult(name = "cmcreationDates", type = String.class),
+						@ColumnResult(name = "cmcodSector", type = String.class),
+						@ColumnResult(name = "cmidTipoSolicitud", type = String.class),
+						@ColumnResult(name = "cmfolioReapertura", type = String.class),
+						@ColumnResult(name = "cmfolio", type = String.class),//5
+						@ColumnResult(name = "cmSubTipoTramite", type = String.class),
+						@ColumnResult(name = "cmtienePreautorizacion", type = String.class),
+						@ColumnResult(name = "cmfolioPreautorizacion", type = String.class),
+						@ColumnResult(name = "cmnombreProveedor", type = String.class),
+						@ColumnResult(name = "cmestadoRepublica", type = String.class),//10
+						@ColumnResult(name = "cmnivelHospitalario", type = String.class),
+						@ColumnResult(name = "cmfechaIngreso", type = String.class),
+						@ColumnResult(name = "cmurgencia", type = String.class),//13
+						@ColumnResult(name = "cmhabitacionAsignada", type = String.class),
+						@ColumnResult(name = "cmnumeroPoliza", type = String.class),//15
+						@ColumnResult(name = "cmramo", type = String.class),
+						@ColumnResult(name = "cmpolizaPagadaHasta", type = String.class),
+						@ColumnResult(name = "cminicioVigencia", type = String.class),//
+						@ColumnResult(name = "cmfinVigencia", type = String.class),//
+						@ColumnResult(name = "cmpolProcesoEmision", type = String.class),//20
+						@ColumnResult(name = "cmnombreContratante", type = String.class),
+						@ColumnResult(name = "cmrecienNacido", type = String.class),//
+						@ColumnResult(name = "cmapellidoPaternoPaciente", type = String.class),
+						@ColumnResult(name = "cmapellidoMaternoPaciente", type = String.class),
+						@ColumnResult(name = "cmprimerNombrePaciente", type = String.class),//25
+						@ColumnResult(name = "cmsegundoNombrePaciente", type = String.class),//
+						@ColumnResult(name = "cmnumeroRiesgo", type = String.class),
+						@ColumnResult(name = "cmfechaNacimientoPaciente", type = String.class),//
+						@ColumnResult(name = "cmgeneroPaciente", type = String.class),
+						@ColumnResult(name = "cmtitularPoliza", type = String.class),//30
+						@ColumnResult(name = "cmmedicoRed", type = String.class),
+						@ColumnResult(name = "cmnombreMedico", type = String.class),
+						@ColumnResult(name = "cmespecialidadMedico", type = String.class),
+						@ColumnResult(name = "cmredProveedor", type = String.class),
+						@ColumnResult(name = "cmsintomasDiagnostico", type = String.class),//35
+						@ColumnResult(name = "cmfemiliarResponsable", type = String.class),//
+						@ColumnResult(name = "cmtelFamiliarResponsable", type = String.class),//
+						@ColumnResult(name = "cmnombreReportante", type = String.class),//
+						@ColumnResult(name = "cmtelefonoReportante", type = String.class),//
+						@ColumnResult(name = "cmemailReportante", type = String.class),//40
+						@ColumnResult(name = "cmobservacionesIngreso", type = String.class), //
+						@ColumnResult(name = "cmnivelComplejidad", type = String.class),//
+						@ColumnResult(name = "cmusuarioAsignado", type = String.class),// 
+						
+						@ColumnResult(name = "cmtipoTramite", type = String.class),
+						@ColumnResult(name = "cmterritorioAtencion", type = String.class),//45
+						@ColumnResult(name = "cmtipoMoneda", type = String.class),//
+						@ColumnResult(name = "cmfechaPrealtaHospitalaria", type = String.class),//
+						@ColumnResult(name = "cmfechaEgresoHospitalaria", type = String.class),
+						@ColumnResult(name = "cmtieneInsumoRecobro", type = String.class),
+						@ColumnResult(name = "cmimporteEdoCuentaSdesv", type = String.class),//50
+						@ColumnResult(name = "cmdesviosEdoCuenta", type = String.class),//
+						@ColumnResult(name = "cmbaseIndemnizacion", type = String.class),
+						@ColumnResult(name = "cmmontoAutHospital", type = String.class),
+						@ColumnResult(name = "cmmontoConIva", type = String.class), //
+						@ColumnResult(name = "sinnumeroSiniestro", type = String.class),//55
+						@ColumnResult(name = "sinestado", type = String.class),//
+						@ColumnResult(name = "sintipoSiniestro", type = String.class),
+						@ColumnResult(name = "sinporcentajeEdoCta", type = String.class),
+						@ColumnResult(name = "sinmontoSiniestro", type = String.class), // 
+						@ColumnResult(name = "sinfolioRam", type = String.class),//60
+						@ColumnResult(name = "sincodDiagnistico", type = String.class),//
+						@ColumnResult(name = "sindescDiagnostico", type = String.class),//
+						@ColumnResult(name = "sinfechaOcurrencia", type = String.class),
+						@ColumnResult(name = "sincausa", type = String.class),
+						@ColumnResult(name = "sinconsecuencia", type = String.class),//65
+						@ColumnResult(name = "sinfechaInicioSintomas", type = String.class),//
+						@ColumnResult(name = "sincoberturaAfectada", type = String.class),//
+						@ColumnResult(name = "sintipoPago", type = String.class),
+						@ColumnResult(name = "sintipoReserva", type = String.class),
+						@ColumnResult(name = "cptclaveCpt", type = String.class),//70
+						@ColumnResult(name = "cptdescripcionCpt", type = String.class),//
+						@ColumnResult(name = "sindeducibleContratado", type = String.class),
+						@ColumnResult(name = "sinreduccionDeducible", type = String.class),//
+						@ColumnResult(name = "sinincrementoDeducible", type = String.class),
+						@ColumnResult(name = "sintotalDeducible", type = String.class),//75
+						@ColumnResult(name = "sincoaseguroContratado", type = String.class),//
+						@ColumnResult(name = "sinredCoaSeguroHosp", type = String.class),
+						@ColumnResult(name = "sinincCoaseguroHosp", type = String.class),// 
+						@ColumnResult(name = "sintopeCoaseguro", type = String.class),
+						@ColumnResult(name = "sintipoTopeCoaseguro", type = String.class),//80
+						@ColumnResult(name = "sintotalCoaseguroHosp", type = String.class),//
+						@ColumnResult(name = "hmedintegrante", type = String.class),//
+						@ColumnResult(name = "hmednombreMedico", type = String.class),//
+						@ColumnResult(name = "hmedespecialidad", type = String.class),//
+						@ColumnResult(name = "hmedmontoAutorizado", type = String.class),//85
+						@ColumnResult(name = "hmedfolioRam", type = String.class),//
+						@ColumnResult(name = "hmedtipoPago", type = String.class), //
+							
+						@ColumnResult(name = "hmedtipoReserva", type = String.class),//
+						@ColumnResult(name = "sintotalAutorizadoHm", type = String.class),//
+						@ColumnResult(name = "sincoaseguroMedico", type = String.class),//90
+						@ColumnResult(name = "sinredCoaseguroMed", type = String.class),//
+						@ColumnResult(name = "sintotalCoaseguroMed", type = String.class),//
+						@ColumnResult(name = "cmcoaseguroMedico", type = String.class),
+						@ColumnResult(name = "cmtotalCargoPaciente", type = String.class),
+						@ColumnResult(name = "mediproveedor", type = String.class), //95
+						@ColumnResult(name = "medidescripcionMedicamento", type = String.class),// 
+						@ColumnResult(name = "medicodigoMedicamento", type = String.class),
+						@ColumnResult(name = "medicantidad", type = String.class),
+						@ColumnResult(name = "mediprecioAutUnidad", type = String.class),
+						@ColumnResult(name = "sintotalAutorizadoMed", type = String.class),//100
+						@ColumnResult(name = "sinfolioRamMed", type = String.class),//
+						@ColumnResult(name = "sindeducibleMedicamentos", type = String.class),
+						@ColumnResult(name = "sincoaseguroMedicamentos", type = String.class),//
+						@ColumnResult(name = "sintotalMedicamentos", type = String.class),
+						@ColumnResult(name = "serviciotipoServicio", type = String.class),//105
+						@ColumnResult(name = "serviciorazonSocial", type = String.class),//
+						@ColumnResult(name = "serviciocantidad", type = String.class),
+						@ColumnResult(name = "servicioprecioAutUnidad", type = String.class),
+						@ColumnResult(name = "sintotalAutorizadoServ", type = String.class),
+						@ColumnResult(name = "sinfolioRamServ", type = String.class),//110
+						@ColumnResult(name = "sindeducibleServicios", type = String.class),
+						@ColumnResult(name = "sincoaseguroServicios", type = String.class),
+						@ColumnResult(name = "sintotalServicios", type = String.class),
+						@ColumnResult(name = "cmbaseRechazo", type = String.class),
+						@ColumnResult(name = "valorMedicoTratante", type = String.class),//115
+						@ColumnResult(name = "valorEspecialidad", type = String.class),//
+						@ColumnResult(name = "valorMontoAutorizado", type = String.class), 
+						@ColumnResult(name = "valorTipoPago", type = String.class), 
+						@ColumnResult(name = "valorTipoReserva", type = String.class),
+						@ColumnResult(name = "docTipoDocumento", type = String.class),//120
+						@ColumnResult(name = "cmidSolicitud", type = Long.class)
+				}))
 
 
 @Entity
@@ -23,7 +159,7 @@ public class CMCentralMedica {
 	@Id
 	private Long idSolicitud;
 	
-	@OneToMany(mappedBy = "centralMedica")
+	@OneToMany(mappedBy = "centralMedica" )
 	@Cascade(CascadeType.ALL)
 	private List<CMSiniestros> listSiniestros;
 	

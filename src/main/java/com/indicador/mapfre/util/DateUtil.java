@@ -45,5 +45,13 @@ public class DateUtil {
 		fechaLocal = fechaLocal.plusDays(daysToAdd);
 		return fechaLocal.format(formateador);
 	}
+	
+	public static String plusDayToUUU(String fecha, long daysToAdd) {
+		DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+		LocalDate fechaLocal = LocalDate.parse(fecha, formateador);
+		
+		fechaLocal = fechaLocal.plusDays(daysToAdd);
+		return fechaLocal.format(formateador);
+	}
 
 }

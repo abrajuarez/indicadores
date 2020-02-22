@@ -13,7 +13,7 @@
 					<div class="input-group-addon">
 						<i class="fa fa-calendar"></i>
 					</div>
-					<input name ="datepicker" type="text" class="form-control pull-right" id="datepicker" data-date-format="dd/mm/yy"  th:field="*{dateStart}" required="true" pattern="^([0-2][0-9]|3[0-1])(/)(0[1-9]|1[0-2])(/)(\d{2})" placeholder="dd/mm/yy"></input>
+					<input name ="datepicker" type="text" class="form-control pull-right" id="datepickerY" data-date-format="dd/mm/yyyy"  th:field="*{dateStart}" required="true" pattern="^([0-2][0-9]|3[0-1])(/)(0[1-9]|1[0-2])(/)(\d{4})" placeholder="dd/mm/yyyy"></input>
 				   <p th:if="${#fields.hasErrors('dateStart')}" th:errors="*{dateStart}">date Error</p>
 				</div>
 				<!-- /.input group -->

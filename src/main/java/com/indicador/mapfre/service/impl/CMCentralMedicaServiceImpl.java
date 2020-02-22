@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ParameterMode;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -38,8 +40,16 @@ public class CMCentralMedicaServiceImpl implements CMCentralMedicaService {
 		//entityManager.createQuery(ScriptReportCentralMedica.REPORTQUERY+" AND cm.creationDate >= TO_DATE('"+startDate+ "', 'DD/MM/YY') AND cm.creationDate <= TO_DATE('"+finishDate+"','DD/MM/YY')").getResultList();
 		
 		List<Object[]> results = entityManager.createQuery(ScriptReportCentralMedica.REPORTQUERY+" AND cm.creationDate >= TO_DATE('"+startDate+ "', 'DD/MM/YY') AND cm.creationDate <= TO_DATE('"+finishDate+"','DD/MM/YY')").getResultList();
-		
+		//StoredProcedureQuery query = entityManager.createStoredProcedureQuery;
+		/*StoredProcedureQuery query = entityManager.createStoredProcedureQuery("post_comments");
+        query.registerStoredProcedureParameter(1, Long.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(2, Class.class, ParameterMode.REF_CURSOR);
+        query.setParameter(1, 1L);
+
+        query.execute();
+        List<Object[]> postComments = query.getResultList();*/
 		return results;
+		
 	}
 	
 	@Override
@@ -50,7 +60,21 @@ public class CMCentralMedicaServiceImpl implements CMCentralMedicaService {
 	
 	@Override
 	public List<CMCentralMedicaModel> reporte(String dateStart, String dateFinish){
-		List<Object[]> listResult = findAllByCreationDate2(dateStart, dateFinish);
+		//List<Object[]> listResult = findAllByCreationDate2(dateStart, dateFinish);
+		StoredProcedureQuery query = entityManager.createStoredProcedureQuery("XXMPF_BPM_CENTRAL_MED_01_PKG.xxmpf_consulta_excel_cm");
+        query.registerStoredProcedureParameter(1, String.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(2, String.class, ParameterMode.IN);
+        query.registerStoredProcedureParameter(3, Class.class, ParameterMode.REF_CURSOR);
+        query.registerStoredProcedureParameter(4, String.class, ParameterMode.OUT);
+        query.registerStoredProcedureParameter(5, String.class, ParameterMode.OUT);
+        query.registerStoredProcedureParameter(6, String.class, ParameterMode.OUT);
+        query.setParameter(1, dateStart);
+        query.setParameter(1, dateFinish);
+        
+        logger.info("Method:reporte execute store");
+
+        query.execute();
+        List<Object[]> listResult = query.getResultList();
 		List<CMCentralMedicaModel> listCentralMedica = new ArrayList<CMCentralMedicaModel>();
 		
 		//logger.info("Method:reporte add ["+l.get(0).getApellidoMaternoPaciente());

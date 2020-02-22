@@ -140,13 +140,16 @@
 						   name:MothCurrent[a].name,
 						   data:MothCurrent[a].data}
 				series[a]=ser
+				
 				}
 				
 				let dev1Title = {"text" : title};
 				let dev1Series =   series;
 				let dev1xAxis = {categories:MothCurrentAutos[0].categories};
+				console.log("function -> ");
+				//console.log("function: m  param[ series = ",dev1Series ," title = ",dev1Title," xAxis = ",dev1xAxis);
 				let dev1 = new chartBar(dev1Series , dev1Title,dev1xAxis);
-				console.log("function chart -> ",dev1);
+				//console.log("function chart -> ",dev1);
 				$(idContainer).highcharts(dev1,);	
 			}
 			

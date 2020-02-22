@@ -17,5 +17,12 @@ public interface CMBitacoraRepository extends PagingAndSortingRepository<CMBitac
 	
 	@Query("SELECT bita FROM CMBitacora  bita WHERE bita.regProceso.idRegProceso = :id")
 	List<CMBitacora> findFirstElementBYIdRegProceso(Pageable limit,@Param("id") Long IdRegProceso);
+	
+	@Query("SELECT bita FROM CMBitacora  bita, CMRegProceso proceso WHERE bita.regProceso.idRegProceso = proceso.idRegProceso AND proceso.idSolicitud = :idSolicitud  AND bita.nombreActividad = :actividad")
+	List<CMBitacora> findFirstElementBYIdRegProcesoAndNombreActividad(@Param("idSolicitud") Long idSolicitud,Pageable limit,@Param("actividad")String actividad);
+	
+	@Query("SELECT bita FROM CMBitacora  bita, CMRegProceso proceso WHERE bita.regProceso.idRegProceso = proceso.idRegProceso AND proceso.idSolicitud = :idSolicitud  AND bita.nombreActividad = :actividad ORDER BY bita.idBitacora desc")
+	List<CMBitacora> findLastElementBYIdRegProcesoAndNombreActividad(@Param("idSolicitud") Long idSolicitud, @Param("actividad")String actividad);
 
+	
 }

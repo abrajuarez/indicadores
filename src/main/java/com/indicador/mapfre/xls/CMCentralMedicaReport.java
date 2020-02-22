@@ -101,7 +101,7 @@ public class CMCentralMedicaReport {
 		logger.info("methods createSheetOne ");
 		Sheet sheet = workbook.createSheet("central medica");
 		logger.info("methods createSheetOne  fecha 15 = "+DateUtil.plusDay(dates.getDateStart(), 15l));
-		String dateFinish = DateUtil.plusDay(dates.getDateStart(), 15l);//"30/01/20";
+		String dateFinish = DateUtil.plusDay(dates.getDateStart(), 8l);//"30/01/20";
 		List<CMCentralMedica> list = cmservice.findAllByCreationDate(dates.getDateStart(), dateFinish);
 		CellStyleUtil style = new CellStyleUtil(workbook);
 		cellTitle(sheet, style);
@@ -281,8 +281,11 @@ public class CMCentralMedicaReport {
 		Cell cellNivelComplejidad = row.createCell(47);
 		value(row, cellNivelComplejidad, 47, cm.getNivelComplejidad(), style, sheet);
 
+		
+		/*bitacorala ultima de nombre actividad la ultima dictaminacion* 48 -49 */
 		Cell cellUsuarioAsignado = row.createCell(48);
 		value(row, cellUsuarioAsignado, 48, cm.getUsuarioAsignado(), style, sheet);
+		
 		Cell cellTipoTramite = row.createCell(52);
 		value(row, cellTipoTramite, 52, cm.getTipoTramite(), style, sheet);
 
@@ -337,8 +340,8 @@ public class CMCentralMedicaReport {
 		value(row, cellTotalACargoPaciente, 180, cm.getTotalCargoPaciente(), style, sheet);
 		
 		
-		Cell cellRechazoBases = row.createCell(260);
-		value(row, cellRechazoBases  , 260, cm.getBaseRechazo(), style, sheet);
+		Cell cellRechazoBases = row.createCell(261);
+		value(row, cellRechazoBases  , 261, cm.getBaseRechazo(), style, sheet);
 		
 		/*262*/
 		documento(row, cm, style, sheet);
@@ -383,6 +386,7 @@ public class CMCentralMedicaReport {
 
 			CMBitacora bitacora = bitacoraService.findByIdSolicitud(idProceso);
 			if (bitacora != null) {
+				//nombre de actividad = toma de reporte 44 y 45
 				Cell cellFechaCierreReporte = row.createCell(44);
 				value(row, cellFechaCierreReporte, 44, StringUtil.getFecha(bitacora.getFechaFinActividad()), style,
 						sheet);
@@ -545,7 +549,7 @@ public class CMCentralMedicaReport {
 			value(row, cellTotalAutMedicamento, 231, sin.getTotalAutorizadoMed()+"", style, sheet);
 
 			Cell cellFolioRamMedicamento = row.createCell(232);
-			value(row, cellFolioRamMedicamento, 232, "no", style, sheet);
+			value(row, cellFolioRamMedicamento, 232, sin.getFolioRamMed(), style, sheet);
 
 			Cell cellDedMedicamento = row.createCell(233);
 			value(row, cellDedMedicamento, 233, sin.getDeducibleMedicamentos(), style, sheet);
@@ -554,7 +558,7 @@ public class CMCentralMedicaReport {
 			value(row, cellCoaMedicamento, 234, sin.getCoaseguroMedicamentos(), style, sheet);
 
 			Cell cellMedicamentoMontoACargoPaciente = row.createCell(235);
-			value(row, cellMedicamentoMontoACargoPaciente, 235, "no", style, sheet);
+			value(row, cellMedicamentoMontoACargoPaciente, 235, sin.getTotalMedicamentos(), style, sheet);
 			
 			/* 236 - 255 */
 			servicios(row, sin, style, sheet);

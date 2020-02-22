@@ -32,15 +32,16 @@ public class IndicadorFTEController {
 	public String index(Model model) {
 		model.addAttribute("MothCurrentAutos",service.createMothCurrent("Autos"));
 		model.addAttribute("MothCurrentAyE",service.createMothCurrent("AyE"));
-		model.addAttribute("MothCurrentDanos",service.createMothCurrent("Da�os"));
+		model.addAttribute("MothCurrentDanos",service.createMothCurrent("Daños"));
 		model.addAttribute("MothCurrentVida",service.createMothCurrent("Vida"));
 		
 		model.addAttribute("MothPreviousAutos",service.createMothPrevious("Autos"));
 		model.addAttribute("MothPreviousAyE",service.createMothPrevious("AyE"));
-		model.addAttribute("MothPreviousDanos",service.createMothPrevious("Da�os"));
+		model.addAttribute("MothPreviousDanos",service.createMothPrevious("Daños"));
 		model.addAttribute("MothPreviousVida",service.createMothPrevious("Vida"));
 		
 		return "mapfre/fte/index";
+		
 	}
 	
 	@PostMapping("/download/fte.pdf")

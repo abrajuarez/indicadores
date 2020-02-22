@@ -20,5 +20,4 @@ public interface XxmpfBpmIndEmiDetalleRepository extends JpaRepository<XxmpfBpmI
 	
 	@Query("SELECT TRUNC(SUM(detalle.tiempoAtencion) / SUM(emision.numRiesgos),2)FROM XxmpfBpmIndEmiDetalle detalle INNER JOIN XxmpfBpmIndEmision emision ON detalle.idEmisionFK = emision.idEmision  WHERE   detalle.estatus != 'Pendiente' AND detalle.area = 'Emisión' AND emision.sector = :sector")
 	public BigDecimal truncTiempoActividadBySector(@Param("sector") String sector);
-
 }

@@ -10,4 +10,8 @@ import com.indicador.mapfre.entity.CMBitacora;
 public interface CMBitacoraService {
 
 	CMBitacora findByIdSolicitud(Long id);
+	
+	CMBitacora findFirstElementBYIdRegProcesoAndNombreActividad(Long idSolicitud, int numPage, String order, String actividad);
+
+	CMBitacora findLastElementBYIdRegProcesoAndNombreActividad(Long idSolicitud,  String actividad);
 }

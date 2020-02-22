@@ -25,6 +25,7 @@ import com.indicador.mapfre.model.DateCMModel;
 import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.service.CMCentralMedicaService;
 import com.indicador.mapfre.xls.CMCentralMedicaReport;
+import com.indicador.mapfre.xls.CmCentralReporte;
 
 @Controller
 public class CMCentralMedicaController {
@@ -34,8 +35,11 @@ public class CMCentralMedicaController {
 	@Autowired
 	private CMCentralMedicaService centralService;
 	
+	/*@Autowired
+	private CMCentralMedicaReport report;*/
+	
 	@Autowired
-	private CMCentralMedicaReport report;
+	CmCentralReporte report;
 
 	@GetMapping("/indicador_centralmedica")
 	public String index(Model model) {

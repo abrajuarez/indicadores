@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,7 +25,7 @@ public class CMSiniestros {
 	@Id
 	private Long idSiniestro;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("ID_SOLICITUD")
 	@JoinColumn(name="ID_SOLICITUD",insertable = false, updatable = false)
 	private CMCentralMedica centralMedica;
