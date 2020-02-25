@@ -26,6 +26,11 @@ function validarFormulario(){
 				autoclose : true,
 				dateFormat : "dd/mm/yy"
 			})
+			
+			$('#datepickerY').datepicker({
+				autoclose : true,
+				dateFormat : "dd/mm/yyyy"
+			})
 			validarFormulario();
 			
 		});

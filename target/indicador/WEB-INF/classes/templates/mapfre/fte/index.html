@@ -123,28 +123,33 @@
 			
 			m("#dev1","Autos",MothCurrentAutos);
 			m("#dev2","AyE",MothCurrentAyE);
-			m("#dev3","Autos",MothCurrentDanos);
-			m("#dev4","AyE",MothCurrentVida);
+			m("#dev3","Daños",MothCurrentDanos);
+			m("#dev4","Vida",MothCurrentVida);
 			
 			m("#dev5","Autos",MothPreviousAutos);
 			m("#dev6","AyE",MothPreviousAyE);
-			m("#dev7","Autos",MothPreviousDanos);
-			m("#dev8","AyE",MothPreviousVida);
+			m("#dev7","Daños",MothPreviousDanos);
+			m("#dev8","Vida",MothPreviousVida);
 			
 			function m(idContainer,title,MothCurrent){
 				let series = [];
+				
+				let xAxis = [];
 				
 				for(var a in MothCurrent){
 				
 				let ser = {type:MothCurrent[a].type,
 						   name:MothCurrent[a].name,
 						   data:MothCurrent[a].data}
+				let cat={categories:MothCurrent[a].categories}
+				xAxis = cat
 				series[a]=ser
 				}
-				
+				//console.log("function categorias",xAxis);
 				let dev1Title = {"text" : title};
 				let dev1Series =   series;
-				let dev1xAxis = {categories:MothCurrentAutos[0].categories};
+				let dev1xAxis = xAxis;// {categories:MothCurrentAutos[0].categories};
+				//console.log("function series-> ",series);
 				let dev1 = new chartBar(dev1Series , dev1Title,dev1xAxis);
 				console.log("function chart -> ",dev1);
 				$(idContainer).highcharts(dev1,);	
