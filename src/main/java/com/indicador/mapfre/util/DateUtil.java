@@ -10,10 +10,10 @@ import java.time.format.DateTimeFormatter;
 public class DateUtil {
 
 	public static String formatterString(String fecha)  {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yy");
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
 		try {
 		if (fecha.isEmpty() || fecha.length() < 8) {
-			String dateString = "01/01/20";
+			String dateString = "01/01/2020";
 			Date date = formatter.parse(dateString);
 			return formatter.format(date) + "";
 		}
@@ -28,7 +28,7 @@ public class DateUtil {
 		}catch (Exception e) {
 			
 		}
-		return "01/01/20";
+		return "01/01/2020";
 	}
 
 	public static String minusMonths(String fecha, long meses) {
