@@ -16,7 +16,7 @@
 	<description>Description the chart mapfre</description>
 	<!-- Jar O WAR -->
 
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 
 	<properties>

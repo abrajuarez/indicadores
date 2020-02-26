@@ -7,13 +7,13 @@ import javax.validation.constraints.Size;
 public class DateModel {
 
 	@NotNull
-    @Size(min=10, max=10)
-	@Pattern(regexp ="^([0-2][0-9]|3[0-1])(/)(0[1-9]|1[0-2])(/)(\\d{4})")
+    @Size(min=8, max=8)
+	@Pattern(regexp ="^([0-2][0-9]|3[0-1])(/)(0[1-9]|1[0-2])(/)(\\d{2})")
 	private String dateStart;
 	
 	@NotNull
-    @Size(min=10, max=10)
-	@Pattern(regexp ="^([0-2][0-9]|3[0-1])(/)(0[1-9]|1[0-2])(/)(\\d{4})")
+    @Size(min=8, max=8)
+	@Pattern(regexp ="^([0-2][0-9]|3[0-1])(/)(0[1-9]|1[0-2])(/)(\\d{2})")
 	private String dateFinish;
 	
 	public DateModel() {

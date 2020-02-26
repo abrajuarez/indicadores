@@ -20,21 +20,18 @@ function validarFormulario(){
 
 			$('#datepicker').datepicker({
 				autoclose : true,
-				dateFormat : "dd/mm/yyyy"
+				dateFormat : "dd/mm/yy"
 			})
 			$('#datepicker2').datepicker({
 				autoclose : true,
-				dateFormat : "dd/mm/yyyy"
+				dateFormat : "dd/mm/yy"
 			})
 			
 			$('#datepickerY').datepicker({
 				autoclose : true,
 				dateFormat : "dd/mm/yyyy"
 			})
-			$('#datepicker2Y').datepicker({
-				autoclose : true,
-				dateFormat : "dd/mm/yyyy"
-			})
+			
 			validarFormulario();
 			
 		});
