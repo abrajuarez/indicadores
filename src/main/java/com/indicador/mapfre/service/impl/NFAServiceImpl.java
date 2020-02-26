@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.indicador.mapfre.entity.XxmpfBpmIndEmision;
 import com.indicador.mapfre.service.NFAService;
+import com.indicador.mapfre.util.DateUtil;
 
 @Service("nfaServiceImpl")
 public class NFAServiceImpl implements NFAService{
@@ -87,7 +88,7 @@ public class NFAServiceImpl implements NFAService{
 	public List<String> distinctStatusByFechaFinAndSector(String dateStart, String dateFinish, String sector) {
 		// TODO Auto-generated method stub
 		logger.info("Method:distinctStatusByFechaFinAndSector");
-		return emisionService.distinctStatusByFechfinAndaSector(dateStart, dateFinish, sector);
+		return emisionService.distinctStatusByFechfinAndaSector(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish), sector);
 	}
 
 	@Override

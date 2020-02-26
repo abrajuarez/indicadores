@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.indicador.mapfre.entity.XxmpfBpmIndEmision;
 import com.indicador.mapfre.repository.XxmpfBpmIndEmisionRepository;
 import com.indicador.mapfre.service.NFRService;
+import com.indicador.mapfre.util.DateUtil;
 
 @Service("nfrServiceImpl")
 public class NFRServiceImpl implements NFRService {
@@ -27,13 +28,13 @@ public class NFRServiceImpl implements NFRService {
 	public List<String> findSectorByFechaInicio(String dateStart, String dateFinish) {
 		// TODO Auto-generated method stub
 		logger.info("Method findSectorByFechaInicio param [ "+dateStart+" - "+dateFinish);
-		return emisionService.findDistincSectorByFechaInicio(dateStart, dateFinish);
+		return emisionService.findDistincSectorByFechaInicio(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish));
 	}
 
 	@Override
 	public List<XxmpfBpmIndEmision> findAllEmisionByFechaInicio(String dateStart, String dateFinish) {
 	 logger.info("Method findAllEmisionByFechaInicio param [ "+dateStart+" - "+dateFinish);
-		return emisionRepository.findAllByFechaFinAndEstatusEmision(dateStart, dateFinish);
+		return emisionRepository.findAllByFechaFinAndEstatusEmision(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish));
 	}
 
 	@Override

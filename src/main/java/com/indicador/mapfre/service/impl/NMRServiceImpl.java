@@ -13,6 +13,7 @@ import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.repository.XxmpfBpmIndEmisionRepository;
 import com.indicador.mapfre.service.EmisionService;
 import com.indicador.mapfre.service.NMRService;
+import com.indicador.mapfre.util.DateUtil;
 
 @Service
 public class NMRServiceImpl implements NMRService{
@@ -34,7 +35,7 @@ public class NMRServiceImpl implements NMRService{
 
 	@Override
 	public List<XxmpfBpmIndEmision> allByFechaFin(DateModel dates){
-		return repository.findAllByAreaAndEstatusAndFechaFin(dates.getDateStart(), dates.getDateFinish());
+		return repository.findAllByAreaAndEstatusAndFechaFin(DateUtil.formatterString(dates.getDateStart()), DateUtil.formatterString(dates.getDateFinish()));
 	}
 	 
 	@Override

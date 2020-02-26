@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.indicador.mapfre.entity.XxmpfBpmIndEmision;
 import com.indicador.mapfre.repository.XxmpfBpmIndEmisionRepository;
 import com.indicador.mapfre.service.EmisionService;
+import com.indicador.mapfre.util.DateUtil;
 
 @Service("emisionServiceImpl")
 public class EmisionServiceImpl implements EmisionService {
@@ -28,25 +29,25 @@ public class EmisionServiceImpl implements EmisionService {
 	@Override
 	public List<String> findDistincSectorByFechaInicio(String dateStart, String dateFinish) { // TODO Auto-generated
 																								// method stub
-		return emisionRepository.distinctSectorByFechaInicio(dateStart, dateFinish);
+		return emisionRepository.distinctSectorByFechaInicio(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish));
 	}
 
 	@Override
 	public List<XxmpfBpmIndEmision> findAllEmisionByFechaInicio(String dateStart, String dateFinish) {
 		logger.info("Method findAllEmisionByFechaInicio param [ " + dateStart + " - " + dateFinish);
-		return emisionRepository.findAllEmisionByFechaInicio(dateStart, dateFinish);
+		return emisionRepository.findAllEmisionByFechaInicio(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish));
 	}
 
 	@Override
 	public List<String> findDistincSectorByFechaFin(String dateStart, String dateFinish) {
 		// TODO Auto-generated method stub
-		return emisionRepository.distinctSectorByFechaFin(dateStart, dateFinish);
+		return emisionRepository.distinctSectorByFechaFin(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish));
 	}
 
 	@Override
 	public List<XxmpfBpmIndEmision> findAllEmisionByFechaFin(String dateStart, String dateFinish) {
 		// TODO Auto-generated method stub
-		return emisionRepository.findAllEmisionByFechaFin(dateStart, dateFinish);
+		return emisionRepository.findAllEmisionByFechaFin(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish));
 	}
 
 	@Override
@@ -65,7 +66,7 @@ public class EmisionServiceImpl implements EmisionService {
 
 	@Override
 	public List<String> distinctStatusByFechfinAndaSector(String dateStart, String dateFinish, String sector) {
-		return emisionRepository.distinctStatusByFechaFinAndSector(dateStart, dateFinish, sector);
+		return emisionRepository.distinctStatusByFechaFinAndSector(DateUtil.formatterString(dateStart), DateUtil.formatterString( dateFinish), sector);
 	}
 
 	@Override
