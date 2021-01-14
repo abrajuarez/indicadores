@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.indicador.centralmedica.mapfre</groupId>
+  <artifactId>centralmedica</artifactId>
+  <versioning>
+    <release>report</release>
+    <versions>
+      <version>0.0.1-SNAPSHOT</version>
+      <version>2.2.5.RELEASE</version>
+      <version>a</version>
+      <version>0</version>
+      <version>report</version>
+    </versions>
+    <lastUpdated>20201203053139</lastUpdated>
+  </versioning>
+</metadata>

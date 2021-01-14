@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Nov 03 14:45:47 CST 2020
+geronimo-javamail_1.4_mail-1.8.4-sources.jar>central=
+geronimo-javamail_1.4_mail-1.8.4.pom>central=
+geronimo-javamail_1.4_mail-1.8.4.jar>central=

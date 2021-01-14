@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Dec 15 17:50:23 CST 2020
+r2dbc-postgresql-0.8.6.RELEASE.jar>central=
+r2dbc-postgresql-0.8.6.RELEASE.pom>central=
+r2dbc-postgresql-0.8.6.RELEASE-javadoc.jar>central=
+r2dbc-postgresql-0.8.6.RELEASE-sources.jar>central=

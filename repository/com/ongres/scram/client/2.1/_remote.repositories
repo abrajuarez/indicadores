@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Dec 15 17:50:23 CST 2020
+client-2.1-javadoc.jar>central=
+client-2.1.jar>central=
+client-2.1-sources.jar>central=
+client-2.1.pom>central=

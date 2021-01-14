@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Dec 15 17:50:26 CST 2020
+zipkin-reporter-brave-2.16.1.jar>central=
+zipkin-reporter-brave-2.16.1.pom>central=
+zipkin-reporter-brave-2.16.1-javadoc.jar>central=
+zipkin-reporter-brave-2.16.1-sources.jar>central=

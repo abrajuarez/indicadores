@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Tue Dec 15 17:16:40 CST 2020
+netty-transport-native-epoll-4.1.55.Final.pom>central=
+netty-transport-native-epoll-4.1.55.Final-sources.jar>central=
+netty-transport-native-epoll-4.1.55.Final-javadoc.jar>central=
+netty-transport-native-epoll-4.1.55.Final-linux-x86_64.jar>central=
