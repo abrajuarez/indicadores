@@ -21,6 +21,7 @@ import com.indicador.mapfre.model.Report2CentralMedicaModel;
 import com.indicador.mapfre.model.ReportCentralMedicaModel;
 
 
+
 @SqlResultSetMapping(
 		name = "CentralValueMapping",
 		classes = @ConstructorResult(
@@ -153,7 +154,7 @@ import com.indicador.mapfre.model.ReportCentralMedicaModel;
 
 
 @Entity
-@Table(name = "XxmpfBpmCmCentralmedica")
+@Table(name = "XxmpfBpmCmCentralmedica", schema = "usrwm9com")
 public class CMCentralMedica {
 
 	@Id

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "XxmpfBpmCmRegProceso")
+@Table(name = "XxmpfBpmCmRegProceso", schema = "usrwm9com")
 public class CMRegProceso {
 
 	@Id

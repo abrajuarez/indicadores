@@ -18,6 +18,7 @@ import com.indicador.mapfre.bussine.CreateXls;
 import com.indicador.mapfre.model.ChartModel;
 import com.indicador.mapfre.model.CotizacionModel;
 import com.indicador.mapfre.model.DateModel;
+import com.indicador.mapfre.util.DateModelUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.core.io.InputStreamResource;
@@ -37,6 +38,9 @@ public class CotizacionController {
 	@Autowired
 	@Qualifier("createXlsImpl")
 	private CreateXls createXls;
+	
+	@Autowired
+	DateModelUtil dateModelUtil; 
 	
 	@GetMapping("/indicador")
 	public String index(Model model) {
@@ -111,24 +115,27 @@ public class CotizacionController {
 		
 	@PostMapping("/chartByDateStarts")
 	public @ResponseBody List<ChartModel> chartByDateStart(@ModelAttribute("datesmodel")  DateModel datesmodel) {	
-		 String dateStart= datesmodel.getDateStart();
-		 String dateFinish= datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		System.out.println("entro reques "+dateStart+" final "+dateFinish);
 		return cotizacion.drawChartModel(dateStart,dateFinish);	
 	}
 	
 	@PostMapping("/chartByDateStarts2")
 	public @ResponseBody List<CotizacionModel> chartByDateStart2(@ModelAttribute("datesmodel")  DateModel datesmodel) {	
-		 String dateStart= datesmodel.getDateStart();
-		 String dateFinish= datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		System.out.println("entro reques2-> "+dateStart+" final "+dateFinish);
 		return cotizacion.chartByDate(dateStart,dateFinish);	
 	}
 	
 	@PostMapping("/download/customers.xlsx")
     public ResponseEntity<InputStreamResource> excelCustomersReport(@ModelAttribute("datesmodel")  DateModel datesmodel) throws IOException {
-		String dateStart= datesmodel.getDateStart();
-		 String dateFinish= datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		 System.out.println("entro reques2 xls-> "+dateStart+" final "+dateFinish);
     ByteArrayInputStream in = createXls.create(cotizacion.chartByDate(dateStart,dateFinish));
     // return IOUtils.toByteArray(in);

@@ -13,6 +13,7 @@ import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.repository.XxmpfBpmIndEmisionRepository;
 import com.indicador.mapfre.service.EmisionService;
 import com.indicador.mapfre.service.NMRService;
+import com.indicador.mapfre.util.CalendarUtil;
 import com.indicador.mapfre.util.DateUtil;
 
 @Service
@@ -27,6 +28,10 @@ public class NMRServiceImpl implements NMRService{
 	@Autowired
 	private EmisionService emisionService;
 	
+	@Autowired
+	CalendarUtil calendarUtil;
+	
+	
 	@Override
 	public List<String> sectorAll() {
 		// TODO Auto-generated method stub
@@ -35,7 +40,7 @@ public class NMRServiceImpl implements NMRService{
 
 	@Override
 	public List<XxmpfBpmIndEmision> allByFechaFin(DateModel dates){
-		return repository.findAllByAreaAndEstatusAndFechaFin(DateUtil.formatterString(dates.getDateStart()), DateUtil.formatterString(dates.getDateFinish()));
+		return repository.findAllByAreaAndEstatusAndFechaFin(calendarUtil.covertStringToCalendar(dates.getDateStart()), calendarUtil.covertStringToCalendar(dates.getDateFinish()));
 	}
 	 
 	@Override
@@ -55,9 +60,10 @@ public class NMRServiceImpl implements NMRService{
 						      + " detalle.area = 'Emisión' AND "
 						      + " detalle.estatus = 'Emitido' AND"
 						      + " emision.estatus = 'Emitido' AND"
-						      + " emision.fechaFin  > TO_DATE('"+date.getDateStart()+"', 'DD/MM/YY') AND"
-						      + " emision.fechaFin  < TO_DATE('"+date.getDateFinish()+"', 'DD/MM/YY') "
-						     ).getResultList();
+						      + " emision.fechaFin  > ?1 AND"
+						      + " emision.fechaFin  < ?2"
+						     ).setParameter(1, calendarUtil.covertStringToCalendar(date.getDateStart()))
+				              .setParameter(2, calendarUtil.covertStringToCalendar(date.getDateFinish())).getResultList();
 		return results;
 	}
 

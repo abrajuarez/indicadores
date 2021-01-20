@@ -1,5 +1,7 @@
 package com.indicador.mapfre.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -15,7 +17,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-@Table(name = "xxmpf_Bpm_Ind_Emision")
+@Table(name = "xxmpf_Bpm_Ind_Emision", schema = "usrwm9com")
 public class XxmpfBpmIndEmision {
 
 	@Id
@@ -96,16 +98,16 @@ public class XxmpfBpmIndEmision {
 	@Column(name="FOLIO_COT")
 	private String folioCot;
 	
-	@Column(name="FECHA_INICIO")
-	private String fechaInicio;
+	
 	
 	@Column(name="FECHA_ULT_MOD")
 	private String fechaUltMod;
 	
-	
+	@Column(name="FECHA_INICIO")
+	private LocalDateTime fechaInicio;
 	
 	@Column(name="FECHA_FIN")
-	private String fechaFin;
+	private LocalDateTime fechaFin;
 	
 	@Column(name="TIEMPO_T_FOLIO")
 	private Integer tiempoTFolio;
@@ -381,7 +383,7 @@ public class XxmpfBpmIndEmision {
 		this.folioCot = folioCot;
 	}
 
-	public String getFechaInicio() {
+	/*public String getFechaInicio() {
 		if(fechaInicio == null)
 	       	 return "";
 	        else
@@ -390,7 +392,7 @@ public class XxmpfBpmIndEmision {
 
 	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
-	}
+	}*/
 
 	public String getFechaUltMod() {
 		if(fechaUltMod == null)
@@ -404,8 +406,9 @@ public class XxmpfBpmIndEmision {
 	}
 
 	
+	
 
-	public String getFechaFin() {
+	/*public String getFechaFin() {
 		if(fechaFin == null)
 	       	 return "";
 	        else
@@ -414,7 +417,11 @@ public class XxmpfBpmIndEmision {
 
 	public void setFechaFin(String fechaFin) {
 		this.fechaFin = fechaFin;
-	}
+	}*/
+
+	
+
+
 
 	public Integer getTiempoTFolio() {
 		if(tiempoTFolio == null)
@@ -422,6 +429,30 @@ public class XxmpfBpmIndEmision {
 	        else
 		return tiempoTFolio;
 	}
+
+	public LocalDateTime getFechaInicio() {
+		return fechaInicio;
+	}
+
+
+
+	public void setFechaInicio(LocalDateTime fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+
+
+	public LocalDateTime getFechaFin() {
+		return fechaFin;
+	}
+
+
+
+	public void setFechaFin(LocalDateTime fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+
 
 	public void setTiempoTFolio(Integer tiempoTFolio) {
 		this.tiempoTFolio = tiempoTFolio;

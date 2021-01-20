@@ -9,7 +9,7 @@ $(function($) {
 		 e.preventDefault();
 		 $("#grafica_principal").hide();
 		 $("#graficadetalle").show();
-		 var chartStatus = $.post("/indicador_nfa_store",$(this).serialize() );
+		 var chartStatus = $.post("/indicador/indicador_nfa_store",$(this).serialize() );
 		 
 		 chartStatus.done(function( ChartDatos ) {
 			 console.log("detalle ",ChartDatos);

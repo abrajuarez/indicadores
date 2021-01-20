@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.indicador.mapfre.bussine.ChartFTE;
 import com.indicador.mapfre.pdf.FTEPdf;
+import com.indicador.mapfre.util.DateModelUtil;
 
 @Controller
 public class IndicadorFTEController {
@@ -27,6 +28,9 @@ public class IndicadorFTEController {
 	
 	@Autowired
 	private FTEPdf pdfReport;
+	
+	@Autowired
+	DateModelUtil dateModelUtil;
 	
 	@GetMapping("/indicador_fte")
 	public String index(Model model) {

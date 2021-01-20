@@ -1,5 +1,7 @@
 package com.indicador.mapfre.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +11,7 @@ import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "xxmpf_Bpm_Ind_Emi_Detalle")
+@Table(name = "xxmpf_Bpm_Ind_Emi_Detalle", schema = "usrwm9com")
 public class XxmpfBpmIndEmiDetalle {
 
 	@Id
@@ -56,10 +58,10 @@ public class XxmpfBpmIndEmiDetalle {
 	private String fechaInicio;
 	
 	@Column(name="FECHA_INICIO_ATENCION")
-	private String fechaInicioAtencion;
+	private LocalDateTime fechaInicioAtencion;
 	
 	@Column(name="FECHA_FIN")
-	private String fechaFin;
+	private LocalDateTime fechaFin;
 	
 	@Column(name="TIEMPO_ACTIVIDAD")
 	private Integer tiempoActividad;
@@ -89,26 +91,10 @@ public class XxmpfBpmIndEmiDetalle {
 		
 	}
 
-	public XxmpfBpmIndEmiDetalle(Integer idEmiDetalle, XxmpfBpmIndEmision idEmisionFK, String area, String actividad,
-			String estatus, String motivo, String usuarioAnalista, String nombreanalista, String usuarioSuscriptor,
-			String nombreSuscriptor, String usuarioEmisor, String nombreEmisor, String fechaInicio, String fechaFin,
-			Integer tiempoActividad) {
-		super();
-		this.idEmiDetalle = idEmiDetalle;
-		this.idEmisionFK = idEmisionFK;
-		this.area = area;
-		this.actividad = actividad;
-		this.estatus = estatus;
-		this.motivo = motivo;
-		this.usuarioAnalista = usuarioAnalista;
-		this.nombreanalista = nombreanalista;
-		this.usuarioSuscriptor = usuarioSuscriptor;
-		this.nombreSuscriptor = nombreSuscriptor;
-		this.usuarioEmisor = usuarioEmisor;
-		this.nombreEmisor = nombreEmisor;
-		this.fechaInicio = fechaInicio;
+	
+
+	public void setFechaFin(LocalDateTime fechaFin) {
 		this.fechaFin = fechaFin;
-		this.tiempoActividad = tiempoActividad;
 	}
 
 	public Integer getIdEmiDetalle() {
@@ -252,15 +238,14 @@ public class XxmpfBpmIndEmiDetalle {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public String getFechaFin() {
-		if(fechaFin == null)
-			return "";
-		else
+	
+
+	public LocalDateTime getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(String fechaFin) {
-		this.fechaFin = fechaFin;
+	public void setFechaInicioAtencion(LocalDateTime fechaInicioAtencion) {
+		this.fechaInicioAtencion = fechaInicioAtencion;
 	}
 
 	public Integer getTiempoActividad() {
@@ -282,14 +267,7 @@ public class XxmpfBpmIndEmiDetalle {
 		this.actividadATiempo = actividadATiempo;
 	}
 
-	public String getFechaInicioAtencion() {
-		return fechaInicioAtencion;
-	}
-
-	public void setFechaInicioAtencion(String fechaInicioAtencion) {
-		this.fechaInicioAtencion = fechaInicioAtencion;
-	}
-
+	
 	public Integer getTiempoDias() {
 		return tiempoDias;
 	}

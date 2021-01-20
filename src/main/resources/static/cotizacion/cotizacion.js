@@ -48,7 +48,7 @@ $('.sector1').submit(function(e) {
 	 $('#detalle-grafica').show();
 	
 	 
-	 var sector = $.post("/indicador_cotizacion_sec_detalles",$(this).serialize() );
+	 var sector = $.post("/indicador/indicador_cotizacion_sec_detalles",$(this).serialize() );
 	 
 	 sector.done(function( data ) {
 		
@@ -76,7 +76,7 @@ $('.agente1').submit(function(e) {
 	 $('#detalle-grafica').show();
 	
 	 
-	 var sector = $.post("/indicador_cotizacion_agente",$(this).serialize() );
+	 var sector = $.post("/indicador/indicador_cotizacion_agente",$(this).serialize() );
 	 
 	 sector.done(function( data ) {
 		
@@ -104,7 +104,7 @@ $('.retrabajosector').submit(function(e) {
 	 $('#retrabajo_grafica').show();
 	
 	 
-	 var sector = $.post("/indicador_cotizacion_retrabajo_sector",$(this).serialize() );
+	 var sector = $.post("/indicador/indicador_cotizacion_retrabajo_sector",$(this).serialize() );
 	 
 	 sector.done(function( data ) {
 		
@@ -132,7 +132,7 @@ $('.retrabajoagente').submit(function(e) {
 	 $('#retrabajo_grafica').show();
 	
 	 
-	 var sector = $.post("/indicador_cotizacion_retrabajo_agente",$(this).serialize() );
+	 var sector = $.post("/indicador/indicador_cotizacion_retrabajo_agente",$(this).serialize() );
 	 
 	 sector.done(function( data ) {
 		

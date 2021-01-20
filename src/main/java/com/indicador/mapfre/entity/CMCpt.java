@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "XxmpfBpmCmCpt")
+@Table(name = "XxmpfBpmCmCpt", schema = "usrwm9com")
 public class CMCpt {
 
 	@Id

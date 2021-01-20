@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.indicador.mapfre.bussine.ChartNFR;
 import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.pdf.NFRPdf;
+import com.indicador.mapfre.util.DateModelUtil;
 
 @Controller
 public class IndicadorNFRController {
@@ -37,6 +38,9 @@ public class IndicadorNFRController {
 	@Autowired
 	private NFRPdf pdfReport;
 	
+	@Autowired
+	DateModelUtil dateModelUtil;
+	
 	@GetMapping("/indicador_nfr")
 	public String index(Model model) {
 		model.addAttribute("datesmodel", new DateModel());
@@ -49,11 +53,12 @@ public class IndicadorNFRController {
 			logger.error("Error method show not valid date "+bindingResult);
             return "redirect:/indicador_nfr";
         }		
-		String dateStart = datesmodel.getDateStart();
-		String dateFinish = datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		logger.info("method show param [ dateStart "+ dateStart +" dateFinish = "+dateFinish+" ]");
 		
-		model.addAttribute("datesmodel", new DateModel(dateStart, dateFinish));
+		model.addAttribute("datesmodel", datesmodel);
 		model.addAttribute("dataCotizacion", charNFRService.drawChartBarraSimple(dateStart, dateFinish));
 		return "mapfre/nfr/show";
 	}
@@ -61,10 +66,11 @@ public class IndicadorNFRController {
 	@PostMapping("/download/nfr.pdf")
 	public ResponseEntity<InputStreamResource> CreatePdfReport(@ModelAttribute("datesmodel") DateModel datesmodel)
 			throws IOException {
-		String dateStart = datesmodel.getDateStart();
-		String dateFinish = datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		System.out.println("entro reques2 xls-> " + dateStart + " final " + dateFinish);
-		ByteArrayInputStream in = pdfReport.create(datesmodel, charNFRService.drawChartBarraSimple(dateStart, dateFinish));
+		ByteArrayInputStream in = pdfReport.create(datesConver, charNFRService.drawChartBarraSimple(dateStart, dateFinish));
 		// return IOUtils.toByteArray(in);
 		System.out.println("entro reques2 pdf-> " + in);
 

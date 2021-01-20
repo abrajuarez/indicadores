@@ -19,7 +19,7 @@ import org.hibernate.annotations.CascadeType;
 
 
 @Entity
-@Table(name = "XxmpfBpmCmSiniestros")
+@Table(name = "XxmpfBpmCmSiniestros", schema = "usrwm9com")
 public class CMSiniestros {
 
 	@Id

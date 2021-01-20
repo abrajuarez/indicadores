@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.indicador.mapfre.service.XxmpfBpmIndCotizacionService;
+import com.indicador.mapfre.util.CalendarUtil;
 import com.indicador.mapfre.util.DateUtil;
 import com.indicador.mapfre.repository.XxmpfBpmIndCotizacionRepository;
 
@@ -14,6 +15,9 @@ public class XxmpfBpmIndCotizacionServiceImpl  implements XxmpfBpmIndCotizacionS
 
 	@Autowired
 	private XxmpfBpmIndCotizacionRepository repository;
+	
+	@Autowired
+	CalendarUtil calendarUtil;
 	
 	
 	@Override
@@ -33,7 +37,7 @@ public class XxmpfBpmIndCotizacionServiceImpl  implements XxmpfBpmIndCotizacionS
 	
 	@Override
 	public List<String> getStatusByBetween(String dateStart,String dateFinish ){
-		List<String> listStatus = repository.findDistinctEstatusByBetween(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish) );
+		List<String> listStatus = repository.findDistinctEstatusByBetween(calendarUtil.covertStringToCalendar(dateStart), calendarUtil.covertStringToCalendar(dateFinish) );
 		listStatus.forEach(item->System.out.println("Status = "+item));
 		return listStatus;
 	}
@@ -41,44 +45,44 @@ public class XxmpfBpmIndCotizacionServiceImpl  implements XxmpfBpmIndCotizacionS
 	@Override
 	public int countEstatusByFechaInicioBetweens(String dateStart,String dateFinish,String status ){
 		if(status == null) {
-			return repository.countEstatusIsNullFechaInicioBetween(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish));
-		}return repository.countEstatusByFechaInicioBetween(dateStart,dateFinish,status );
+			return repository.countEstatusIsNullFechaInicioBetween(calendarUtil.covertStringToCalendar(dateStart), calendarUtil.covertStringToCalendar(dateFinish));
+		}return repository.countEstatusByFechaInicioBetween(calendarUtil.covertStringToCalendar(dateStart),calendarUtil.covertStringToCalendar(dateFinish),status );
 	}
 	
 	@Override
 	public int countEstatusByFechaInicioBetween(String dateStart,String dateFinish) {
-		return repository.countEstatusByFechaInicioBetween(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish) );
+		return repository.countEstatusByFechaInicioBetween(calendarUtil.covertStringToCalendar(dateStart), calendarUtil.covertStringToCalendar(dateFinish) );
 	}
 	
 	@Override
     public int countRecotizacionByFechaInicioBetween(String dateStart,String dateFinish ) {
-		return repository.countRecotizacionByFechaInicioBetween(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish));
+		return repository.countRecotizacionByFechaInicioBetween(calendarUtil.covertStringToCalendar(dateStart), calendarUtil.covertStringToCalendar(dateFinish));
 	}
 	
 	@Override
 	public int countDevolucionByFechaInicioBetween(String dateStart,String dateFinish ) {
-		return repository.countDevolucionByFechaInicioBetween(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish));
+		return repository.countDevolucionByFechaInicioBetween(calendarUtil.covertStringToCalendar(dateStart), calendarUtil.covertStringToCalendar(dateFinish));
 	}
 	
 	@Override
 	public Integer getAVGTiempoDiasByFecaInicio(String dateStart,String dateFinish) {
-		return repository.findAVGTiempoDiasByFechaInicio(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish));
+		return repository.findAVGTiempoDiasByFechaInicio(calendarUtil.covertStringToCalendar(dateStart), calendarUtil.covertStringToCalendar(dateFinish));
 	}
 
 	@Override
 	public List<String> findDistinctMotivoByFechaInicio(String dateStart, String dateFinish, String status) {
-		return repository.findDistinctMotivoByFechaInicio(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish), status);
+		return repository.findDistinctMotivoByFechaInicio(calendarUtil.covertStringToCalendar(dateStart), calendarUtil.covertStringToCalendar(dateFinish), status);
 	}
 
 	@Override
 	public Integer countMotivosByFechaInicioBetween(String dateStart, String dateFinish, String motivo,  String status) {
-		return repository.countMotivosByFechaInicioBetween(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish),motivo, status);
+		return repository.countMotivosByFechaInicioBetween(calendarUtil.covertStringToCalendar(dateStart), calendarUtil.covertStringToCalendar(dateFinish),motivo, status);
 	}
 
 	@Override
 	public Integer totalMotivosByFechaInicioBetween(String dateStart, String dateFinish, String status) {
 		// TODO Auto-generated method stub
-		return repository.totalMotivosByFechaInicioBetween(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish), status);
+		return repository.totalMotivosByFechaInicioBetween(calendarUtil.covertStringToCalendar(dateStart), calendarUtil.covertStringToCalendar(dateFinish), status);
 	}
 	
 }

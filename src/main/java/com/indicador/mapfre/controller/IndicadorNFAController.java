@@ -26,6 +26,7 @@ import com.indicador.mapfre.model.ChartBarraModel;
 import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.model.DetalleCotizacionModel;
 import com.indicador.mapfre.pdf.NFAPdf;
+import com.indicador.mapfre.util.DateModelUtil;
 import com.indicador.mapfre.xls.NFAReport;
 
 @Controller
@@ -40,7 +41,8 @@ public class IndicadorNFAController {
 	private NFAReport report;
 	
 	@Autowired
-	private NFAPdf pdfReport;
+	private NFAPdf pdfReport;@Autowired
+	DateModelUtil dateModelUtil;
 
 	@GetMapping("/indicador_nfa")
 	public String index(Model model) {
@@ -54,11 +56,12 @@ public class IndicadorNFAController {
 			return "redirect:/indicador_nfa";
 		}
 
-		String dateStart = datemodel.getDateStart();
-		String dateFinish = datemodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datemodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		logger.info("Method show param +[ fecha inicio = " + dateStart + " fecha final = " + dateFinish + " ]");
 		model.addAttribute("chartNfa", chartNfa.drawChart(dateStart, dateFinish));
-		model.addAttribute("datesmodel", new DateModel(dateStart, dateFinish));
+		model.addAttribute("datesmodel", datemodel);
 		model.addAttribute("detallemodel", new DetalleCotizacionModel(dateStart, dateFinish));
 		return "mapfre/nfa/show";
 	}
@@ -78,10 +81,11 @@ public class IndicadorNFAController {
 	@PostMapping("/download/foliosAtendidos.xlsx")
 	public ResponseEntity<InputStreamResource> excelCustomersReport(@ModelAttribute("datesmodel") DateModel datesmodel)
 			throws IOException {
-		String dateStart = datesmodel.getDateStart();
-		String dateFinish = datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		logger.info("entro reques2 xls-> " + dateStart + " final " + dateFinish);
-		ByteArrayInputStream in = report.create(datesmodel);
+		ByteArrayInputStream in = report.create(datesConver);
 		// return IOUtils.toByteArray(in);
 
 		HttpHeaders headers = new HttpHeaders();
@@ -93,8 +97,9 @@ public class IndicadorNFAController {
 	@PostMapping("/download/nfa.pdf")
 	public ResponseEntity<InputStreamResource> CreatePdfReport(@ModelAttribute("datesmodel") DateModel datesmodel)
 			throws IOException {
-		String dateStart = datesmodel.getDateStart();
-		String dateFinish = datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		System.out.println("entro reques2 xls-> " + dateStart + " final " + dateFinish);
 		ByteArrayInputStream in = pdfReport.create(datesmodel,chartNfa.drawChart(dateStart, dateFinish));
 		// return IOUtils.toByteArray(in);

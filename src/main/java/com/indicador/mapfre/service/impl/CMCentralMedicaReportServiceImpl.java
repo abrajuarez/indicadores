@@ -24,7 +24,7 @@ import com.indicador.mapfre.service.CMCentralMedicaReportService;
 import com.indicador.mapfre.util.ConvertUtil;
 import com.indicador.mapfre.util.ScriptReportCentralMedica;
 
-import oracle.jdbc.OracleType;
+//import oracle.jdbc.OracleType;
 import oracle.jdbc.internal.OracleTypes;
 
 

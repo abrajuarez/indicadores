@@ -14,6 +14,7 @@ import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.model.FPRModel;
 import com.indicador.mapfre.repository.FPRRepository;
 import com.indicador.mapfre.service.FPRService;
+import com.indicador.mapfre.util.CalendarUtil;
 import com.indicador.mapfre.util.StringUtil;
 
 @Service
@@ -31,16 +32,19 @@ public class ChartFPRImpl implements ChartFPR {
 
 	@Autowired
 	private FPRRepository fPRRepository;
+	
+	@Autowired
+	CalendarUtil calendarUtil;
 
 	@Override
 	public List<FPRModel> create(DateModel date) {
 		logger.info("method-: create ");
 		List<FPRModel> listTable = new ArrayList<FPRModel>();
 		List<String> listSectores = fprService.getSectores();
-		List<XxmpfBpmIndEmision> listRecibidos = fPRRepository.allFolioRecibidoByFechaInicio(date.getDateStart(),
-				date.getDateFinish());
-		List<XxmpfBpmIndEmision> listAtendidos = fPRRepository.allFolioAtendidoByFechaFin(date.getDateStart(),
-				date.getDateFinish());
+		List<XxmpfBpmIndEmision> listRecibidos = fPRRepository.allFolioRecibidoByFechaInicio(calendarUtil.covertStringToCalendar(date.getDateStart()),
+				calendarUtil.covertStringToCalendar(date.getDateFinish()));
+		List<XxmpfBpmIndEmision> listAtendidos = fPRRepository.allFolioAtendidoByFechaFin(calendarUtil.covertStringToCalendar(date.getDateStart()),
+				calendarUtil.covertStringToCalendar(date.getDateFinish()));
 		logger.info("method-: create 2");
 		for (int j = 0; j < listSectores.size(); j++) {
 			for (int i = 0; i < rangoHoras.length; i++) {

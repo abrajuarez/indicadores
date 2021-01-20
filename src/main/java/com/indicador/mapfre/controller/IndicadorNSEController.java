@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.indicador.mapfre.bussine.ChartNSE;
 import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.pdf.NSEPdf;
+import com.indicador.mapfre.util.DateModelUtil;
 
 @Controller
 public class IndicadorNSEController {
@@ -33,6 +34,9 @@ public class IndicadorNSEController {
 	
 	@Autowired
 	private NSEPdf pdfReport;
+	
+	@Autowired
+	DateModelUtil dateModelUtil;
 
 	@GetMapping("/indicador_nse")
 	public String index(Model model) {
@@ -46,11 +50,12 @@ public class IndicadorNSEController {
 		if (bindingResult.hasErrors()) {
             return "redirect:/indicador_nse";
         }
-		String dateStart = datemodel.getDateStart();
-		String dateFinish = datemodel.getDateFinish();	
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datemodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();	
 		
-		model.addAttribute("datesmodel", new DateModel(dateStart, dateFinish));
-		model.addAttribute("grafica", chartNSE.chartFilterFecha(datemodel));
+		model.addAttribute("datesmodel", datemodel);
+		model.addAttribute("grafica", chartNSE.chartFilterFecha(datesConver));
 		return "mapfre/nse/show";
 	}
 	
@@ -59,11 +64,12 @@ public class IndicadorNSEController {
 			throws IOException {
 		logger.info("Method: CreatePdfReport");
 		
-		String dateStart = datesmodel.getDateStart();
-		String dateFinish = datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		
 		System.out.println("entro reques2 xls-> " + dateStart + " final " + dateFinish);
-		ByteArrayInputStream in = pdfReport.create(datesmodel,chartNSE.chartFilterFecha(datesmodel));
+		ByteArrayInputStream in = pdfReport.create(datesConver,chartNSE.chartFilterFecha(datesConver));
 		// return IOUtils.toByteArray(in);
 		logger.info("entro reques2 pdf-> " + in);
 

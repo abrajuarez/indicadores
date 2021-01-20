@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.indicador.mapfre.entity.XxmpfBpmIndEmision;
 import com.indicador.mapfre.service.NFAService;
+import com.indicador.mapfre.util.CalendarUtil;
 import com.indicador.mapfre.util.DateUtil;
 
 @Service("nfaServiceImpl")
@@ -27,6 +28,9 @@ public class NFAServiceImpl implements NFAService{
 	@PersistenceContext
     private EntityManager entityManager;
 	
+	@Autowired
+	CalendarUtil calendar;
+	
 	@Override
 	public List<String> distincSectorByFechaFin(String dateStart, String dateFinish) {
 		logger.info("Method:distincSectorByFechaFin");
@@ -36,8 +40,10 @@ public class NFAServiceImpl implements NFAService{
 			      		     + " ON emision.idEmision = detalle.idEmisionFK"
 			      		     + " WHERE detalle.estatus != 'En Proceso'  AND"
 			      		     + " detalle.area = 'Emisión' AND"
-			      		     + " emision.fechaFin > TO_DATE('"+dateStart+"', 'DD/MM/YY') AND"
-			      		     		+ " emision.fechaFin < TO_DATE('"+dateFinish+"', 'DD/MM/YY')" ).getResultList();		    
+			      		     + " emision.fechaFin > ?1 AND"
+			      		     + " emision.fechaFin < ?2")
+			                        .setParameter(1, calendar.covertStringToCalendar(dateStart))
+			                        .setParameter(2, calendar.covertStringToCalendar(dateFinish)).getResultList();		    
 			  return resultList;
 		//return emisionService.findDistincSectorByFechaFin(dateStart, dateFinish);
 	}
@@ -45,20 +51,20 @@ public class NFAServiceImpl implements NFAService{
 	@Override
 	public List<XxmpfBpmIndEmision> allEmisionByFechaFin(String dateStart, String dateFinish) {  
 		logger.info("Method:allEmisionByFechaFin");
-		/*List<Object[]> results = entityManager.createQuery("SELECT emision.idEmision, detalle.area, detalle.motivo  FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle WHERE emision.idEmision = detalle.idEmisionFK  AND detalle.area = 'EMISION' AND emision.fechaFin > TO_DATE('"+dateStart+"', 'DD/MM/YY') AND emision.fechaFin < TO_DATE('"+dateFinish+"', 'DD/MM/YY')").getResultList();
-
-		for (Object[] result : results) {
-			System.out.println(result[0] + " " + result[1] + " - " + result[2]);
-		}*/
-		TypedQuery<XxmpfBpmIndEmision> query = entityManager.
+		
+		List<XxmpfBpmIndEmision> query = entityManager.
 			      createQuery("SELECT emision  "
 			      		+ "FROM XxmpfBpmIndEmision emision INNER JOIN XxmpfBpmIndEmiDetalle detalle "
 			      		+ " ON emision.idEmision = detalle.idEmisionFK"
 			      		+ " WHERE  detalle.estatus != 'En Proceso' AND"
 			      		+ " detalle.area = 'Emisión' AND"
-			      		+ " emision.fechaFin > TO_DATE('"+dateStart+"', 'DD/MM/YY') AND emision.fechaFin < TO_DATE('"+dateFinish+"', 'DD/MM/YY')", XxmpfBpmIndEmision.class);
-			    List<XxmpfBpmIndEmision> resultList = query.getResultList();
-			    return resultList;
+			      		+ " emision.fechaFin > ?1 AND emision.fechaFin < ?2")
+			      .setParameter(1, calendar.covertStringToCalendar(dateStart))
+                  .setParameter(2, calendar.covertStringToCalendar(dateFinish))
+                  .getResultList();
+		
+		return query;
+			   
 	//	return emisionService.findAllEmisionByFechaFin(dateStart, dateFinish);
 	}
 	
@@ -72,8 +78,10 @@ public class NFAServiceImpl implements NFAService{
 						+ " FROM XxmpfBpmIndEmision emision, XxmpfBpmIndEmiDetalle detalle"
 						+ " WHERE emision.idEmision = detalle.idEmisionFK  AND"
 						      + " detalle.area = 'Emisión' AND "
-						      + "emision.fechaFin > TO_DATE('"+dateStart+"', 'DD/MM/YY') AND "
-						      + "emision.fechaFin < TO_DATE('"+dateFinish+"', 'DD/MM/YY')").getResultList();
+						      + "emision.fechaFin > ?1 AND "
+						      + "emision.fechaFin < ?2")
+				 .setParameter(1, calendar.covertStringToCalendar(dateStart))
+                 .setParameter(2, calendar.covertStringToCalendar(dateFinish)).getResultList();
 		return results;
 	}
 
@@ -88,7 +96,7 @@ public class NFAServiceImpl implements NFAService{
 	public List<String> distinctStatusByFechaFinAndSector(String dateStart, String dateFinish, String sector) {
 		// TODO Auto-generated method stub
 		logger.info("Method:distinctStatusByFechaFinAndSector");
-		return emisionService.distinctStatusByFechfinAndaSector(DateUtil.formatterString(dateStart), DateUtil.formatterString(dateFinish), sector);
+		return emisionService.distinctStatusByFechfinAndaSector(dateStart, dateFinish, sector);
 	}
 
 	@Override

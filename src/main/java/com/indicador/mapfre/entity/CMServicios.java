@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "XxmpfBpmCmServicios")
+@Table(name = "XxmpfBpmCmServicios", schema = "usrwm9com")
 public class CMServicios {
 
 

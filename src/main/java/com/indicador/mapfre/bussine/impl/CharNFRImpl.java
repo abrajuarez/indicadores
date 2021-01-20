@@ -26,11 +26,13 @@ public class CharNFRImpl implements ChartNFR {
 
 	@Override
 	public List<ChartBarraModel> drawChartBarraSimple(String dateStart, String dateFinish) {
+		logger.info("Method drawChartBarraSimple param [ "+dateStart+" - "+dateFinish);
 		List<String> listSector = nfrService.findSectorByFechaInicio(dateStart, dateFinish);
 		int lengtList = listSector.size();
 		List<ChartBarraModel> listChart = new ArrayList<ChartBarraModel>();
 
 		List<XxmpfBpmIndEmision> listEmision = nfrService.findAllEmisionByFechaInicio(dateStart, dateFinish);
+		logger.info("Method drawChartBarraSimple emision [ ");
 		if (lengtList == 0) {
 			Integer[] arrayData = new Integer[1];
 			arrayData[0] = 0;

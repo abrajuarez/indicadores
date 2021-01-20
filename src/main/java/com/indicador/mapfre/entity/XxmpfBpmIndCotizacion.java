@@ -1,12 +1,14 @@
 package com.indicador.mapfre.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.*;
 
 
 @Entity
-@Table(name = "xxmpf_Bpm_Ind_Cotizacion")
+@Table(name = "xxmpf_Bpm_Ind_Cotizacion", schema = "usrwm9com")
 public class XxmpfBpmIndCotizacion {
 	
     @Id
@@ -84,13 +86,13 @@ public class XxmpfBpmIndCotizacion {
 	private Integer tiempoFolio;
     
     @Column(name="FECHA_INICIO")
-    private String fechaInicio;
+    private LocalDateTime fechaInicio;
     
     @Column(name="FECHA_FIN")
-    private String fechaFin;
+    private LocalDateTime  fechaFin;
     
     @Column(name="TIEMPO_DIAS")
-   	private Integer tiempoDias;
+   	private String tiempoDias;
     
     @Column(name="SECTOR")
    	private String sector;
@@ -281,27 +283,32 @@ public class XxmpfBpmIndCotizacion {
 		this.tiempoFolio = tiempoFolio;
 	}
 
-	public String getFechaInicio() {
+	
+	
+
+	public LocalDateTime getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(String fechaInicio) {
+	public void setFechaInicio(LocalDateTime fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public String getFechaFin() {
+	public LocalDateTime getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(String fechaFin) {
+	public void setFechaFin(LocalDateTime fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 
-	public Integer getTiempoDias() {
+	
+
+	public String getTiempoDias() {
 		return tiempoDias;
 	}
 
-	public void setTiempoDias(Integer tiempoDias) {
+	public void setTiempoDias(String tiempoDias) {
 		this.tiempoDias = tiempoDias;
 	}
 

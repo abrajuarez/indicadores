@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "XxmpfBpmCmComentProc")
+@Table(name = "XxmpfBpmCmComentProc", schema = "usrwm9com")
 public class CMComentProc {
 
 	@Id

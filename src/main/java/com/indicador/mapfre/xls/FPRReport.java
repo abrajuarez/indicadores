@@ -19,6 +19,7 @@ import com.indicador.mapfre.entity.XxmpfBpmIndEmision;
 import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.repository.FPRRepository;
 import com.indicador.mapfre.service.FPRService;
+import com.indicador.mapfre.util.CalendarUtil;
 import com.indicador.mapfre.util.StringUtil;
 import com.indicador.mapfre.util.xls.CellStyleUtil;
 
@@ -35,6 +36,9 @@ public class FPRReport {
 	private int[] horario = { 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 };
 
 	private String[] title = { "  FECHA  ", "  SECTOR  ", " HORA ", "FOLIO RECIBIDO" };
+	
+	@Autowired
+	CalendarUtil calendarUtil;
 
 	@Autowired
 	private FPRService fprService;
@@ -47,9 +51,9 @@ public class FPRReport {
 
 			List<String> listSectores = fprService.getSectores();
 			List<XxmpfBpmIndEmision> listRecibidos = fPRRepository
-					.allFolioRecibidoByFechaInicio(datesmodel.getDateStart(), datesmodel.getDateFinish());
-			List<XxmpfBpmIndEmision> listAtendidos = fPRRepository.allFolioAtendidoByFechaFin(datesmodel.getDateStart(),
-					datesmodel.getDateFinish());
+					.allFolioRecibidoByFechaInicio(calendarUtil.covertStringToCalendar(datesmodel.getDateStart()), calendarUtil.covertStringToCalendar(datesmodel.getDateFinish()));
+			List<XxmpfBpmIndEmision> listAtendidos = fPRRepository.allFolioAtendidoByFechaFin(calendarUtil.covertStringToCalendar(datesmodel.getDateStart()),
+					                                                                          calendarUtil.covertStringToCalendar(datesmodel.getDateFinish()));
 			CellStyleUtil style = new CellStyleUtil(workbook);
 			createSheetOne(workbook, style, listSectores, listRecibidos, listAtendidos);
 			createSheetRecibidos(workbook, style, "Detalle de Folios Recibidos", listRecibidos);

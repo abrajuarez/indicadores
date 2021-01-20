@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.indicador.mapfre.bussine.ChartPFP;
 import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.pdf.PFPPdf;
+import com.indicador.mapfre.util.DateModelUtil;
 import com.indicador.mapfre.xls.PFPReport;
 
 @Controller
@@ -34,6 +35,9 @@ public class IndicadorPFPController {
 
 	@Autowired
 	private PFPPdf pdfReport;
+	
+	@Autowired
+	DateModelUtil dateModelUtil;
 
 	@GetMapping("/indicador_pfp")
 	public String index(Model model) {

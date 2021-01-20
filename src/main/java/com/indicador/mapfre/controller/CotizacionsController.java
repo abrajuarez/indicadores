@@ -30,6 +30,7 @@ import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.model.DetalleCotizacionModel;
 import com.indicador.mapfre.model.Retrabajo;
 import com.indicador.mapfre.pdf.CotizacionPdf;
+import com.indicador.mapfre.util.DateModelUtil;
 
 @Controller
 public class CotizacionsController {
@@ -42,6 +43,9 @@ public class CotizacionsController {
 	
 	@Autowired
 	private CotizacionPdf pdfReport;
+	
+	@Autowired
+	DateModelUtil dateModelUtil; 
 
 	@GetMapping("/indicador_cotizacion")
 	public String index(Model model) {
@@ -55,8 +59,9 @@ public class CotizacionsController {
 		if (bindingResult.hasErrors()) {
             return "redirect:/indicador_cotizacion";
         }
-		String dateStart = datemodel.getDateStart();
-		String dateFinish = datemodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datemodel) ;
+		String dateStart = datesConver.getDateStart();
+		String dateFinish = datesConver.getDateFinish();
 		logger.info("show param = [dateStart = " +dateStart+ " dateFinish = "+dateFinish +" ]");
 		
 		List<ChartModel> grafica = cotizacion.drawChartModel(dateStart, dateFinish);
@@ -75,7 +80,7 @@ public class CotizacionsController {
 		model.addAttribute("tableMotivo", tableMotivo);
 		model.addAttribute("tableCancelacion", tableCancelacion);
 		model.addAttribute("tableNOAceptacion", tableNOAceptacion );
-		model.addAttribute("datesmodel", new DateModel(dateStart, dateFinish));
+		model.addAttribute("datesmodel", datemodel);
 		model.addAttribute("detallemodel", new DetalleCotizacionModel(dateStart, dateFinish ));
 		
 		return "mapfre/cotizacion/show";
@@ -84,10 +89,11 @@ public class CotizacionsController {
 	@PostMapping("/download/cotizacion.pdf")
 	public ResponseEntity<InputStreamResource> CreatePdfReport(@ModelAttribute("datesmodel") DateModel datesmodel)
 			throws IOException {
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
 		String dateStart = datesmodel.getDateStart();
 		String dateFinish = datesmodel.getDateFinish();
 		System.out.println("entro reques2 xls-> " + dateStart + " final " + dateFinish);
-		ByteArrayInputStream in = pdfReport.create(datesmodel);
+		ByteArrayInputStream in = pdfReport.create(datesConver);
 		// return IOUtils.toByteArray(in);
 		System.out.println("entro reques2 pdf-> " + in);
 
@@ -130,8 +136,9 @@ public class CotizacionsController {
 
 	@PostMapping("/cotizacion_table_retrabajo")
 	public @ResponseBody List<Retrabajo> chartByDateStart(@ModelAttribute("datesmodel") DateModel datesmodel) {
-		String dateStart = datesmodel.getDateStart();
-		String dateFinish = datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart = datesConver.getDateStart();
+		String dateFinish = datesConver.getDateFinish();
 		System.out.println("retrabajo  " + dateStart + " final " + dateFinish);
 		return cotizacion.listRetrabajoByDateStart(dateStart, dateFinish);
 	}

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.indicador.mapfre.bussine.ChartFPR;
 import com.indicador.mapfre.model.DateModel;
+import com.indicador.mapfre.util.DateModelUtil;
 import com.indicador.mapfre.xls.FPRReport;
 
 @Controller
@@ -32,6 +33,9 @@ public class IndicadorFPRController {
 	
 	@Autowired
 	FPRReport report;
+	
+	@Autowired
+	DateModelUtil dateModelUtil;
 	
 	@GetMapping("/indicador_fpr")
 	public String index(Model model) {
@@ -46,23 +50,27 @@ public class IndicadorFPRController {
 			logger.error("Method: Show param invalid");
 			return "redirect:/indicador_fpr";
 		}
+		
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datemodel) ;
 
-		String dateStart = datemodel.getDateStart();
-		String dateFinish = datemodel.getDateFinish();
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		logger.info("Method show param +[ fecha inicio = " + dateStart + " fecha final = " + dateFinish + " ]");
 		
-		model.addAttribute("datesmodel", new DateModel(dateStart, dateFinish));
-		model.addAttribute("listHorario",service.create(datemodel));
+		model.addAttribute("datesmodel", datemodel);
+		model.addAttribute("listHorario",service.create(datesConver));
 		return "mapfre/fpr/show";
 	}
 	
 	@PostMapping("/download/FoliosRecibidosXHora.xlsx")
 	public ResponseEntity<InputStreamResource> excelCustomersReport(@ModelAttribute("datesmodel") DateModel datesmodel)
 			throws IOException {
-		String dateStart = datesmodel.getDateStart();
-		String dateFinish = datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		System.out.println("entro reques2 xls-> " + dateStart + " final " + dateFinish);
-		ByteArrayInputStream in = report.create(datesmodel);
+		ByteArrayInputStream in = report.create(datesConver);
 		// return IOUtils.toByteArray(in);
 
 		HttpHeaders headers = new HttpHeaders();

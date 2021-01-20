@@ -1,5 +1,7 @@
 package com.indicador.mapfre.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "xxmpf_Bpm_Ind_Cot_Detalle")
+@Table(name = "xxmpf_Bpm_Ind_Cot_Detalle", schema = "usrwm9com")
 public class XxmpfBpmIndCotDetalle {
 
 	@Id
@@ -55,7 +57,7 @@ public class XxmpfBpmIndCotDetalle {
 	private String nombreEmisor;
 	
 	@Column(name="FECHA_INICIO")
-	private String fechaInicio;
+	private LocalDateTime fechaInicio;
 	
 	@Column(name="FECHA_FIN")
 	private String fechaFin;
@@ -74,7 +76,7 @@ public class XxmpfBpmIndCotDetalle {
 	public XxmpfBpmIndCotDetalle(Integer idCotizacion, XxmpfBpmIndCotizacion idCotizacionFK, String area,
 			String actividad, String estatus, String motivo, String usuarioAnalista, String nombreanalista,
 			String usuarioSuscriptor, String nombreSuscriptor, String usuarioEmisor, String nombreEmisor,
-			String fechaInicio, String fechaFin, Integer tiempoActividad) {
+			LocalDateTime fechaInicio, String fechaFin, Integer tiempoActividad) {
 		super();
 		this.idCotizacion = idCotizacion;
 		this.idCotizacionFK = idCotizacionFK;
@@ -189,13 +191,17 @@ public class XxmpfBpmIndCotDetalle {
 		this.nombreEmisor = nombreEmisor;
 	}
 
-	public String getFechaInicio() {
+	
+
+	public LocalDateTime getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(String fechaInicio) {
+
+	public void setFechaInicio(LocalDateTime fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
+
 
 	public String getFechaFin() {
 		return fechaFin;

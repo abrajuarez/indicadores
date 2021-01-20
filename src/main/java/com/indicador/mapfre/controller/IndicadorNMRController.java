@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.indicador.mapfre.bussine.ChartNMR;
 import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.pdf.NMRPdf;
+import com.indicador.mapfre.util.DateModelUtil;
 import com.indicador.mapfre.xls.NMRReport;
 
 @Controller
@@ -38,6 +39,9 @@ public class IndicadorNMRController {
 	@Autowired
 	private  NMRPdf pdfReport;
 	
+	@Autowired
+	DateModelUtil dateModelUtil;
+	
 	@GetMapping("/indicador_nmr")
 	public String index(Model model) {
 		model.addAttribute("datesmodel", new DateModel());
@@ -50,21 +54,23 @@ public class IndicadorNMRController {
             return "redirect:/indicador_nmr";
         }
 		
-		String dateStart = datemodel.getDateStart();
-		String dateFinish = datemodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datemodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		logger.info("Method show param +[ fecha inicio = "+dateStart +" fecha final = "+dateFinish+ " ]");
-		model.addAttribute("datesmodel", new DateModel(dateStart, dateFinish));
-		model.addAttribute("grafica", chart.chart(datemodel));
+		model.addAttribute("datesmodel", datemodel);
+		model.addAttribute("grafica", chart.chart(datesConver));
 		return "mapfre/nmr/show";
 	}
 	
 	@PostMapping("/download/numMoviemtosRealizados.xlsx")
 	public ResponseEntity<InputStreamResource> excelCustomersReport(@ModelAttribute("datesmodel") DateModel datesmodel)
 			throws IOException {
-		String dateStart = datesmodel.getDateStart();
-		String dateFinish = datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		System.out.println("entro reques2 xls-> " + dateStart + " final " + dateFinish);
-		ByteArrayInputStream in = report.create(datesmodel);
+		ByteArrayInputStream in = report.create(datesConver);
 		// return IOUtils.toByteArray(in);
 
 		HttpHeaders headers = new HttpHeaders();
@@ -76,10 +82,11 @@ public class IndicadorNMRController {
 	@PostMapping("/download/nmr.pdf")
 	public ResponseEntity<InputStreamResource> CreatePdfReport(@ModelAttribute("datesmodel") DateModel datesmodel)
 			throws IOException {
-		String dateStart = datesmodel.getDateStart();
-		String dateFinish = datesmodel.getDateFinish();
+		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
+		String dateStart= datesConver.getDateStart();
+		 String dateFinish= datesConver.getDateFinish();
 		System.out.println("entro reques2 xls-> " + dateStart + " final " + dateFinish);
-		ByteArrayInputStream in = pdfReport.create(datesmodel,chart.chart(datesmodel));
+		ByteArrayInputStream in = pdfReport.create(datesConver,chart.chart(datesConver));
 		// return IOUtils.toByteArray(in);
 		logger.info("entro reques2 pdf-> " + in);
 

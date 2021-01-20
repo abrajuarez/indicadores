@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.indicador.mapfre.bussine.ChartTPE;
 
 import com.indicador.mapfre.pdf.TPEPdf;
+import com.indicador.mapfre.util.DateModelUtil;
 
 @Controller
 public class IndicadorTPEController {
@@ -29,6 +30,9 @@ public class IndicadorTPEController {
 	
 	@Autowired
 	private TPEPdf pdfReport;
+	
+	@Autowired
+	DateModelUtil dateModelUtil;
 	
 	@GetMapping("/indicador_tpe")
 	public String index(Model model) {
