@@ -15,6 +15,7 @@ public class IndicadormapfreApplication extends SpringBootServletInitializer{
         return application.sources(IndicadormapfreApplication.class);
     }
 	
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(IndicadormapfreApplication.class, args);
