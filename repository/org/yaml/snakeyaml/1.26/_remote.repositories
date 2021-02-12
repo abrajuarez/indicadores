@@ -1,5 +1,6 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Sat Oct 17 10:00:05 CDT 2020
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jan 18 10:31:12 CST 2021
 snakeyaml-1.26.jar>central=
 snakeyaml-1.26-sources.jar>central=
 snakeyaml-1.26.pom>central=
+snakeyaml-1.26-javadoc.jar>central=

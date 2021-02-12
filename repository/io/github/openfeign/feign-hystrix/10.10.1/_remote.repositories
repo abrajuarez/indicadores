@@ -1,5 +1,6 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Nov 03 11:35:45 CST 2020
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Jan 15 10:52:48 CST 2021
 feign-hystrix-10.10.1.jar>central=
 feign-hystrix-10.10.1.pom>central=
 feign-hystrix-10.10.1-sources.jar>central=
+feign-hystrix-10.10.1-javadoc.jar>central=

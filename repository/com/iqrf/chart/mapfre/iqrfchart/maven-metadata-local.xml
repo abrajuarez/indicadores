@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.iqrf.chart.mapfre</groupId>
+  <artifactId>iqrfchart</artifactId>
+  <versioning>
+    <release>tablero_indicador</release>
+    <versions>
+      <version>tablero_indicador</version>
+    </versions>
+    <lastUpdated>20210204031824</lastUpdated>
+  </versioning>
+</metadata>

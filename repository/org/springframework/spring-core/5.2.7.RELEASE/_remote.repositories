@@ -1,5 +1,6 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Nov 03 11:35:23 CST 2020
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Jan 15 10:52:04 CST 2021
 spring-core-5.2.7.RELEASE.jar>central=
+spring-core-5.2.7.RELEASE-javadoc.jar>central=
 spring-core-5.2.7.RELEASE-sources.jar>central=
 spring-core-5.2.7.RELEASE.pom>central=

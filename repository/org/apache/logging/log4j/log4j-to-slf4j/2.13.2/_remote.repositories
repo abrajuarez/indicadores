@@ -1,5 +1,6 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Jan 12 16:32:58 CST 2021
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jan 18 10:32:32 CST 2021
 log4j-to-slf4j-2.13.2.jar>central=
 log4j-to-slf4j-2.13.2.pom>central=
+log4j-to-slf4j-2.13.2-javadoc.jar>central=
 log4j-to-slf4j-2.13.2-sources.jar>central=

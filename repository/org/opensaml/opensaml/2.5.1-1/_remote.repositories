@@ -1,5 +1,6 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Nov 03 14:45:55 CST 2020
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Jan 15 10:56:10 CST 2021
 opensaml-2.5.1-1.jar>central=
 opensaml-2.5.1-1.pom>central=
+opensaml-2.5.1-1-javadoc.jar>central=
 opensaml-2.5.1-1-sources.jar>central=

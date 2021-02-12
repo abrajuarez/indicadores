@@ -1,5 +1,6 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Fri Oct 23 09:43:40 CDT 2020
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Jan 15 10:56:50 CST 2021
+commons-codec-1.13-javadoc.jar>central=
 commons-codec-1.13-sources.jar>central=
 commons-codec-1.13.jar>central=
 commons-codec-1.13.pom>central=

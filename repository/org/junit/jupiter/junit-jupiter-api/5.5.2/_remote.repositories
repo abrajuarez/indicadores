@@ -1,5 +1,6 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Fri Oct 23 09:43:21 CDT 2020
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Jan 15 10:57:02 CST 2021
+junit-jupiter-api-5.5.2-javadoc.jar>central=
 junit-jupiter-api-5.5.2-sources.jar>central=
-junit-jupiter-api-5.5.2.pom>central=
 junit-jupiter-api-5.5.2.jar>central=
+junit-jupiter-api-5.5.2.pom>central=

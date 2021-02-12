@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.indicador.mapfre</groupId>
+  <artifactId>indicador</artifactId>
+  <versioning>
+    <release>tablero_emision</release>
+    <versions>
+      <version>tablero_emision</version>
+    </versions>
+    <lastUpdated>20210115021020</lastUpdated>
+  </versioning>
+</metadata>

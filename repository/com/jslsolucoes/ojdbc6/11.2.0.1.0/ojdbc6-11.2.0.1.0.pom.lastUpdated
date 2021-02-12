@@ -1,4 +1,4 @@
 #NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Wed Jan 13 00:52:50 CST 2021
-@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1610520770193
-https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact com.jslsolucoes\:ojdbc6\:pom\:11.2.0.1.0 from/to central (https\://repo.maven.apache.org/maven2)\: connect timed out
+#Fri Feb 05 10:09:21 CST 2021
+https\://repo.maven.apache.org/maven2/.lastUpdated=1612541361011
+https\://repo.maven.apache.org/maven2/.error=

@@ -1,5 +1,6 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Thu Nov 05 14:58:07 CST 2020
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Jan 15 10:56:48 CST 2021
 rngom-2.3.0.jar>central=
 rngom-2.3.0.pom>central=
 rngom-2.3.0-sources.jar>central=
+rngom-2.3.0-javadoc.jar>central=

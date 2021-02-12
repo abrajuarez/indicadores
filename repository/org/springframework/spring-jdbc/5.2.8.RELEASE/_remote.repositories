@@ -1,5 +1,6 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Sat Oct 17 14:02:24 CDT 2020
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Jan 18 10:30:19 CST 2021
 spring-jdbc-5.2.8.RELEASE.jar>central=
 spring-jdbc-5.2.8.RELEASE.pom>central=
+spring-jdbc-5.2.8.RELEASE-javadoc.jar>central=
 spring-jdbc-5.2.8.RELEASE-sources.jar>central=

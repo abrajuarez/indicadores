@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.chart.denuncia.mapfre</groupId>
+  <artifactId>denuncia</artifactId>
+  <versioning>
+    <release>tablero_indicador</release>
+    <versions>
+      <version>tablero_indicador</version>
+    </versions>
+    <lastUpdated>20210115185302</lastUpdated>
+  </versioning>
+</metadata>
