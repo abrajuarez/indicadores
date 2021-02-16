@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Fri Jan 15 10:55:55 CST 2021
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Nov 03 14:45:45 CST 2020
 opensaml-xacml-saml-impl-3.3.0-sources.jar>central=
-opensaml-xacml-saml-impl-3.3.0-javadoc.jar>central=
-opensaml-xacml-saml-impl-3.3.0.jar>central=
 opensaml-xacml-saml-impl-3.3.0.pom>central=
+opensaml-xacml-saml-impl-3.3.0.jar>central=

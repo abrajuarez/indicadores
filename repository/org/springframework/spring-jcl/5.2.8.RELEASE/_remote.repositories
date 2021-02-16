@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Fri Jan 15 10:51:33 CST 2021
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat Oct 17 14:03:37 CDT 2020
 spring-jcl-5.2.8.RELEASE-sources.jar>central=
-spring-jcl-5.2.8.RELEASE-javadoc.jar>central=
 spring-jcl-5.2.8.RELEASE.jar>central=
 spring-jcl-5.2.8.RELEASE.pom>central=

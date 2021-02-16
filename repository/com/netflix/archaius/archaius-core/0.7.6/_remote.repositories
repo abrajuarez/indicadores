@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Fri Jan 15 10:52:50 CST 2021
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Nov 03 11:35:47 CST 2020
 archaius-core-0.7.6.jar>central=
-archaius-core-0.7.6-javadoc.jar>central=
-archaius-core-0.7.6.pom>central=
 archaius-core-0.7.6-sources.jar>central=
+archaius-core-0.7.6.pom>central=

@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Fri Jan 15 10:56:30 CST 2021
-jaxb-xjc-jdk9-2.3.0-javadoc.jar>central=
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Nov 05 14:58:01 CST 2020
 jaxb-xjc-jdk9-2.3.0-sources.jar>central=
 jaxb-xjc-jdk9-2.3.0.jar>central=
 jaxb-xjc-jdk9-2.3.0.pom>central=

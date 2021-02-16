@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Fri Jan 15 10:55:02 CST 2021
-wss4j-ws-security-dom-2.2.3-javadoc.jar>central=
-wss4j-ws-security-dom-2.2.3.jar>central=
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Nov 03 14:45:27 CST 2020
 wss4j-ws-security-dom-2.2.3-sources.jar>central=
+wss4j-ws-security-dom-2.2.3.jar>central=
 wss4j-ws-security-dom-2.2.3.pom>central=

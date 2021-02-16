@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Mon Jan 18 10:32:32 CST 2021
-log4j-api-2.13.2-javadoc.jar>central=
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jan 12 16:32:59 CST 2021
 log4j-api-2.13.2.jar>central=
 log4j-api-2.13.2.pom>central=
 log4j-api-2.13.2-sources.jar>central=

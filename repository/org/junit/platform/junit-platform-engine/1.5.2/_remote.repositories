@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Fri Jan 15 10:57:05 CST 2021
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Oct 23 09:43:24 CDT 2020
 junit-platform-engine-1.5.2.jar>central=
-junit-platform-engine-1.5.2-javadoc.jar>central=
-junit-platform-engine-1.5.2.pom>central=
 junit-platform-engine-1.5.2-sources.jar>central=
+junit-platform-engine-1.5.2.pom>central=

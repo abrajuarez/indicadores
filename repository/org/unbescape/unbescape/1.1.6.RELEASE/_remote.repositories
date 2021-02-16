@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Mon Jan 18 10:31:18 CST 2021
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sat Oct 17 10:00:09 CDT 2020
 unbescape-1.1.6.RELEASE.jar>central=
 unbescape-1.1.6.RELEASE-sources.jar>central=
-unbescape-1.1.6.RELEASE-javadoc.jar>central=
 unbescape-1.1.6.RELEASE.pom>central=

@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Fri Jan 15 10:57:18 CST 2021
-xmlunit-core-2.6.3.jar>central=
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Fri Oct 23 09:43:34 CDT 2020
 xmlunit-core-2.6.3.pom>central=
-xmlunit-core-2.6.3-javadoc.jar>central=
+xmlunit-core-2.6.3.jar>central=
 xmlunit-core-2.6.3-sources.jar>central=

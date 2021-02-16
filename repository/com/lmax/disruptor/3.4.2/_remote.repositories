@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Fri Jan 15 10:56:56 CST 2021
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Jan 12 23:55:21 CST 2021
 disruptor-3.4.2.jar>central=
-disruptor-3.4.2-javadoc.jar>central=
 disruptor-3.4.2-sources.jar>central=
 disruptor-3.4.2.pom>central=

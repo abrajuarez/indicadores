@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Fri Jan 15 10:56:29 CST 2021
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Thu Nov 05 14:58:00 CST 2020
 maven-jaxb23-plugin-0.14.0-sources.jar>central=
-maven-jaxb23-plugin-0.14.0-javadoc.jar>central=
 maven-jaxb23-plugin-0.14.0.jar>central=
 maven-jaxb23-plugin-0.14.0.pom>central=

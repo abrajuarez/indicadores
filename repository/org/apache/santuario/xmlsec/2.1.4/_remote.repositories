@@ -1,6 +1,5 @@
-#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
-#Fri Jan 15 10:55:58 CST 2021
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Nov 03 14:45:49 CST 2020
 xmlsec-2.1.4.jar>central=
 xmlsec-2.1.4.pom>central=
-xmlsec-2.1.4-javadoc.jar>central=
 xmlsec-2.1.4-sources.jar>central=
