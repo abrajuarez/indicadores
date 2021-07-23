@@ -17,10 +17,10 @@
 			<td class="ese" th:text="${cotizacion.numFolios}">PENDIENTE</td>
 			<td th:text="${cotizacion.porcentaje}+'%'">PENDIENTE</td>
             <td>
-            <form class="sector1"  th:object="${detallemodel}" method="post"> <div th:replace="mapfre/cotizacion/form_detalle"></div></form>
+            <form th:if="${cotizacion.estatus != 'Totales'}" class="sector1"  th:object="${detallemodel}" method="post"> <div th:replace="mapfre/cotizacion/form_detalle"></div></form>
             </td>
             <td>
-            <form class="agente1"  th:object="${detallemodel}" method="post"> <div th:replace="mapfre/cotizacion/form_detalle"></div></form>
+            <form th:if="${cotizacion.estatus != 'Totales'}" class="agente1"  th:object="${detallemodel}" method="post"> <div th:replace="mapfre/cotizacion/form_detalle"></div></form>
             </td>
 		</tr>
 

@@ -2,6 +2,7 @@ package com.indicador.mapfre.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.indicador.mapfre.bussine.ChartFPR;
+import com.indicador.mapfre.model.CotizacionModel;
 import com.indicador.mapfre.model.DateModel;
+import com.indicador.mapfre.model.FPRModel;
 import com.indicador.mapfre.util.DateModelUtil;
 import com.indicador.mapfre.xls.FPRReport;
 
@@ -58,24 +61,35 @@ public class IndicadorFPRController {
 		logger.info("Method show param +[ fecha inicio = " + dateStart + " fecha final = " + dateFinish + " ]");
 		
 		model.addAttribute("datesmodel", datemodel);
-		model.addAttribute("listHorario",service.create(datesConver));
+		model.addAttribute("listHorario",sumatoriaListHorario(service.create(datesConver)));
 		return "mapfre/fpr/show";
 	}
+	
+	public List<FPRModel> sumatoriaListHorario (List<FPRModel> listHorario) {
+		System.out.println("sumatoriaListHorario----------");
+		FPRModel totalesFPRModel=new FPRModel();
+		totalesFPRModel.setSector("Totales");
+		totalesFPRModel.setRangoHorario(" ");
+		for(FPRModel  fPRModel : listHorario){
+			totalesFPRModel.setFolioAtendido(totalesFPRModel.getFolioAtendido()+fPRModel.getFolioAtendido());
+			totalesFPRModel.setFolioRecibido(totalesFPRModel.getFolioRecibido()+fPRModel.getFolioRecibido());
+		}
+		listHorario.add(totalesFPRModel);
+		return listHorario;
+	}
+	
 	
 	@PostMapping("/download/FoliosRecibidosXHora.xlsx")
 	public ResponseEntity<InputStreamResource> excelCustomersReport(@ModelAttribute("datesmodel") DateModel datesmodel)
 			throws IOException {
 		DateModel datesConver= dateModelUtil.convertLocaldateTime(datesmodel) ;
-
 		String dateStart= datesConver.getDateStart();
 		 String dateFinish= datesConver.getDateFinish();
 		System.out.println("entro reques2 xls-> " + dateStart + " final " + dateFinish);
 		ByteArrayInputStream in = report.create(datesConver);
 		// return IOUtils.toByteArray(in);
-
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition", "attachment; filename=Folios Recibidos por hora.xls");
-
 		return ResponseEntity.ok().headers(headers).body(new InputStreamResource(in));
 	}
 }

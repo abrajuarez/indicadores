@@ -65,8 +65,8 @@ public class CotizacionsController {
 		logger.info("show param = [dateStart = " +dateStart+ " dateFinish = "+dateFinish +" ]");
 		
 		List<ChartModel> grafica = cotizacion.drawChartModel(dateStart, dateFinish);
-		List<CotizacionModel> tableCotizacion = cotizacion.chartByDate(dateStart, dateFinish);
-		List<Retrabajo> tableRetrabajo = cotizacion.listRetrabajoByDateStart(dateStart, dateFinish);
+		List<CotizacionModel> tableCotizacion = sumatoriaCotizacion( cotizacion.chartByDate(dateStart, dateFinish));
+		List<Retrabajo> tableRetrabajo = sumatoriaRetrabajo( cotizacion.listRetrabajoByDateStart(dateStart, dateFinish));
 	    Integer	tableProceso = cotizacion.drawTableProcesos(dateStart, dateFinish);
 	    List<AreaTable> tableArea = cotizacion.drawTableArea(dateStart, dateFinish);
 	    List<CotizacionModel> tableMotivo = cotizacion.drawTableMotivo(dateStart, dateFinish,"Cancelaci");
@@ -85,6 +85,33 @@ public class CotizacionsController {
 		
 		return "mapfre/cotizacion/show";
 	}
+	
+	public List<CotizacionModel> sumatoriaCotizacion (List<CotizacionModel> tableCotizacion) {
+		System.out.println("sumatoriaCotizacion----------");
+		CotizacionModel totalesCotizacion=new CotizacionModel();
+		totalesCotizacion.setEstatus("Totales");
+		for(CotizacionModel  cotizacion : tableCotizacion){
+			totalesCotizacion.setNumFolios(totalesCotizacion.getNumFolios()+cotizacion.getNumFolios());
+			totalesCotizacion.setPorcentajeFloat(totalesCotizacion.getPorcentajeFloat()+cotizacion.getPorcentajeFloat());
+		}
+		tableCotizacion.add(totalesCotizacion);
+		return tableCotizacion;
+	}
+	
+	
+	public List<Retrabajo> sumatoriaRetrabajo (List<Retrabajo> tableRetrabajo) {
+		System.out.println("sumatoriaRestrabajo----------");
+		Retrabajo totalesRetrabajo=new Retrabajo();
+		totalesRetrabajo.setRecotizacion("Totales");
+		for(Retrabajo  retrabajo : tableRetrabajo){
+			totalesRetrabajo.setFolios(totalesRetrabajo.getFolios()+retrabajo.getFolios());
+			
+		}
+		tableRetrabajo.add(totalesRetrabajo);
+		return tableRetrabajo;
+	}
+	
+	
 	
 	@PostMapping("/download/cotizacion.pdf")
 	public ResponseEntity<InputStreamResource> CreatePdfReport(@ModelAttribute("datesmodel") DateModel datesmodel)

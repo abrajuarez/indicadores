@@ -10,7 +10,7 @@
 		<tr id="table" th:each="nfa: ${chartNfa}" >
 			<td th:text="${nfa.name}"></td>
            <td th:text="${nfa.data[0]}"></td>
-			<td><form class="detalleNFA"  th:object="${detallemodel}" method="post"> <div th:replace="mapfre/nfa/detalle"></div></form></td>
+			<td><form th:if="${nfa.name != 'Total'}" class="detalleNFA"  th:object="${detallemodel}" method="post"> <div th:replace="mapfre/nfa/detalle"></div></form></td>
 		</tr>
 	</tbody>
 </table>

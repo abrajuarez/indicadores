@@ -12,8 +12,8 @@
 		<tr id="tableS" th:each="retrabajo: ${tableRetrabajo}" >
 			<td class="es"  th:text="${retrabajo.recotizacion}" ></td>
 			<td class="ese" th:text="${retrabajo.folios}" ></td>
-			<td ><form class="retrabajosector"  th:object="${detallemodel}" method="post"> <div th:replace="mapfre/cotizacion/retrabajografica"></div></form></td>
-			<td ><form class="retrabajoagente"  th:object="${detallemodel}" method="post"> <div th:replace="mapfre/cotizacion/retrabajografica"></div></form></td>
+			<td ><form th:if="${retrabajo.recotizacion != 'Totales'}" class="retrabajosector"  th:object="${detallemodel}" method="post"> <div th:replace="mapfre/cotizacion/retrabajografica"></div></form></td>
+			<td ><form th:if="${retrabajo.recotizacion != 'Totales'}" class="retrabajoagente"  th:object="${detallemodel}" method="post"> <div th:replace="mapfre/cotizacion/retrabajografica"></div></form></td>
 		</tr>
 	</tbody>
 </table>

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.indicador.mapfre.bussine.ChartNFA;
 import com.indicador.mapfre.model.ChartBarraModel;
+import com.indicador.mapfre.model.CotizacionModel;
 import com.indicador.mapfre.model.DateModel;
 import com.indicador.mapfre.model.DetalleCotizacionModel;
 import com.indicador.mapfre.pdf.NFAPdf;
@@ -60,11 +61,27 @@ public class IndicadorNFAController {
 		String dateStart= datesConver.getDateStart();
 		 String dateFinish= datesConver.getDateFinish();
 		logger.info("Method show param +[ fecha inicio = " + dateStart + " fecha final = " + dateFinish + " ]");
-		model.addAttribute("chartNfa", chartNfa.drawChart(dateStart, dateFinish));
+		model.addAttribute("chartNfa", sumatoriachartNfa(chartNfa.drawChart(dateStart, dateFinish)));
 		model.addAttribute("datesmodel", datemodel);
 		model.addAttribute("detallemodel", new DetalleCotizacionModel(dateStart, dateFinish));
 		return "mapfre/nfa/show";
 	}
+	
+	public List<ChartBarraModel> sumatoriachartNfa (List<ChartBarraModel> chartNfa) {
+		System.out.println("sumatoriaChartNfa----------");
+		ChartBarraModel totalesChartBarraModel=new ChartBarraModel();
+		Integer[] data = new Integer[1];
+		totalesChartBarraModel.setName("Total");
+		int numFolios=0;
+		for(ChartBarraModel  chartBarraModel : chartNfa){
+			numFolios=numFolios+chartBarraModel.getData()[0].intValue();
+		}
+		data[0]=new Integer(numFolios);
+		totalesChartBarraModel.setData(data);	
+		chartNfa.add(totalesChartBarraModel);
+		return chartNfa;
+	}
+	
 
 	@PostMapping("/indicador_nfa_store")
 	public @ResponseBody List<ChartBarraModel> store(@Valid DetalleCotizacionModel detallemodel,
